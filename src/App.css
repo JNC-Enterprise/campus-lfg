@@ -13,11 +13,16 @@ body{
   margin-right: 80px;
 }
 
-.vertical{
+.line{
   border-left: 5px solid white;
   height: 100vh;
   float:left;
   margin-right: 15px;
+}
+
+.link{
+  color: white;
+  text-decoration: none;
 }
 
 /* for hover effect */
@@ -31,6 +36,29 @@ body{
   justify-items: center; 
   /* centers the items vertically */
   align-items: center;
+}
+
+/* For medium screens (less than 900px wide), collapse to a 2x2 grid */
+@media (max-width: 1000px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* For small screens (less than 600px wide), collapse to a 1-column layout */
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    float:none;
+  }
+  .line{
+    display: none;
+  }
+  .messages{
+    margin-right: 0;
+    float:none;
+    text-align: center;
+  }
 }
   
 .image-container {

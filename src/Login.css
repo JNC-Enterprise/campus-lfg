@@ -1,0 +1,35 @@
+.input-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    background-color: #0d1538; /* Optional background color */
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px; /* Fixed width */
+    padding: 20px; /* Optional padding for the form */
+    border: 1px solid #ccc; /* Optional border */
+    border-radius: 8px; /* Optional rounded corners */
+  }
+
+.input-group{
+    display: flex;
+    align-items: 'center';
+}
+
+.login-label{
+    font-size: 20px;
+    width: 100px;
+    margin: 0;
+}
+
+.login-input{
+    flex: 1;
+    margin: 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 7px; 
+}

@@ -8,9 +8,16 @@ body{
     font-family: 'Fredoka';
 }
 
+
+.test{
+  background-color:red;
+  margin-bottom: 10px;
+}
+
 .messages{
   float: left;
   margin-right: 80px;
+  text-align: center;
 }
 
 .line{
@@ -49,14 +56,16 @@ body{
 @media (max-width: 600px) {
   .gallery {
     grid-template-columns: 1fr;
-    float:none;
+    float: none;
+
   }
   .line{
     display: none;
   }
   .messages{
+    display: none;
     margin-right: 0;
-    float:none;
+    float:none; 
     text-align: center;
   }
 }

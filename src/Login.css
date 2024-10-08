@@ -33,3 +33,15 @@
     border: 1px solid #ccc;
     border-radius: 7px; 
 }
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+.login-button{
+    width: 100px;
+    padding: 10px;
+    cursor: pointer;
+}

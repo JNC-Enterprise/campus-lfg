@@ -12,6 +12,11 @@ function Login() {
           <label className="login-label">PASSWORD </label>
           <input className="login-input" type="password"></input>
         </div>
+        <div className="button-container">
+          <button onClick={{}} className="login-button">
+          LOGIN
+          </button>
+        </div>
       </div>
     </div>
   );

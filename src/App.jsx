@@ -1,21 +1,23 @@
 import React from 'react';
 import './App.css';
 import images from '../backend/gameData.json'
+import messages from '../backend/messages.json'
 
 const App = () => {
   return (
     <div className='main-layout'>
+      <h1 className='message-header'>Messages</h1>
       <div className='messages'>
-        <div> Messages</div>
-        {images.map((image, index) => (
-          <div className='message' key={index}>
-            <div className="test">hello</div>
+        {messages.map((messages, index) => (
+          <div className='actual-messages' key={index}>
+            <img src={messages.profile} className='profile-pic' />
+            <div>{messages.groupName}</div>
+            <div>{messages.message}</div>
           </div>
         ))}
       </div>
-
-
       <div className='line'></div>
+      
       <div className="gallery">
         {images.map((image, index) => (
           <div className="image-container" key={index}>

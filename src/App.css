@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
 body{
-    background-color: black;
-    color: white;
-    font-size: 20px;
-    font-family: 'Fredoka';
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  font-family: 'Fredoka';
 }
 
 .message-header{
@@ -13,19 +13,31 @@ body{
 }
 
 .actual-messages{
-  background-color:red;
+  background-color:grey;
   border-radius: 10px;
   margin-bottom: 10px;
   width: 200px;
   height:50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-left: 5px;
 }
 
 .profile-pic{
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 10px;
-  
+  float: left;
+}
+
+.message-text{
+  float: right;
+  width: 160px;
+  font-size: 15px;
+  justify-content: center;
+  align-items: center;
 }
 
 .messages{
@@ -45,7 +57,6 @@ body{
   text-decoration: none;
 }
 
-/* for hover effect */
 .gallery {
   /* makes a 3x3 grid */
   display: grid;
@@ -60,14 +71,16 @@ body{
 
 .image-container {
   position: relative;
-  width: 384px;
+  width: 100%;
   height: 216px;
+  aspect-ratio: 16/9;
 }
 
 .image {
-  width: 384px;
+  width: 100%;
   height: 216px;
   border-radius: 20px;
+  aspect-ratio: 16/9;
 }
 
 /* For medium screens (less than 900px wide), collapse to a 2x2 grid */
@@ -103,6 +116,7 @@ body{
   }
 }
 
+/* for hover effect */
 .overlay {
   position: absolute;
   border-radius: 20px;

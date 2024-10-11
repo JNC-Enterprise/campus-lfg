@@ -11,8 +11,10 @@ const App = () => {
         {messages.map((messages, index) => (
           <div className='actual-messages' key={index}>
             <img src={messages.profile} className='profile-pic' />
-            <div>{messages.groupName}</div>
-            <div>{messages.message}</div>
+            <div className='message-text'>
+              <div>{messages.groupName}</div>
+              <div>{messages.message}</div>
+            </div>
           </div>
         ))}
       </div>

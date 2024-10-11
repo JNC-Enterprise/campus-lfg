@@ -9,7 +9,7 @@ body{
 }
 
 .message-header{
-  width: 200px;
+  font-size: 30px;
 }
 
 .actual-messages{
@@ -30,6 +30,7 @@ body{
   height: 40px;
   border-radius: 50%;
   float: left;
+  object-fit: cover;
 }
 
 .message-text{

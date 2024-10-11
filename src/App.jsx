@@ -6,13 +6,13 @@ import messages from '../backend/messages.json'
 const App = () => {
   return (
     <div className='main-layout'>
-      <h1 className='message-header'>Messages</h1>
+      <div className='message-header'>Messages</div>
       <div className='messages'>
         {messages.map((messages, index) => (
           <div className='actual-messages' key={index}>
             <img src={messages.profile} className='profile-pic' />
             <div className='message-text'>
-              <div>{messages.groupName}</div>
+              <b>{messages.groupName}</b>
               <div>{messages.message}</div>
             </div>
           </div>

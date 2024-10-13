@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import Messages from './Messages';
 import images from '../backend/gameData.json'
-import messages from '../backend/messages.json'
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className='main-layout'>
+
+      <div className={`main-messages ${isOpen ? 'open' : ''}`}>
       <div className='message-header'>Messages</div>
-      <div className='messages'>
-        {messages.map((messages, index) => (
-          <div className='actual-messages' key={index}>
-            <img src={messages.profile} className='profile-pic' />
-            <div className='message-text'>
-              <b>{messages.groupName}</b>
-              <div>{messages.message}</div>
-            </div>
-          </div>
-        ))}
+        <Messages />
       </div>
+
+      <div className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
+        <div className="burger"></div>
+        <div className="burger"></div>
+        <div className="burger"></div>
+      </div>
+
       <div className='line'></div>
       
       <div className="gallery">

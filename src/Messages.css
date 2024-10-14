@@ -14,10 +14,12 @@
     align-items: center;
     gap: 10px;
     padding-left: 5px;
+    text-decoration: none;
 }
 
 .actual-messages:hover{
     background-color: #4d4d4d;
+    text-decoration: none;
 }
   
 .profile-pic{

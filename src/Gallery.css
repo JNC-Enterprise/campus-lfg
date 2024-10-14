@@ -2,7 +2,7 @@
     /* makes a 3x3 grid */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 20px;
+    row-gap: 2vw;
 
     /* centers the items horizontally */
     justify-items: center; 
@@ -12,7 +12,7 @@
 
 .image-container {
     position: relative;
-    width: 100%;
+    width: 384px;
     height: 216px;
     aspect-ratio: 16/9;
 }

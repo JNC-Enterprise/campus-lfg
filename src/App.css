@@ -13,8 +13,8 @@ body{
 }  
 
 .line{
-  border-left: 5px solid white;
-  height: 100vh;
+  border: 1px solid white;
+  height: 95vh;
   float:left;
   margin-right: 15px;
 }
@@ -22,6 +22,13 @@ body{
 .link{
   color: white;
   text-decoration: none;
+}
+
+/* hacky way to fix the line when the gallery has 2 columns*/
+@media (max-width: 1000px) {
+  .line{
+    height: 135vh;
+  }
 }
 
 /* For small screens (less than 600px wide), collapse to a 1-column layout */

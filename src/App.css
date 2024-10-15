@@ -1,21 +1,22 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* font import */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+body{
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  font-family: 'Fredoka';
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.message-header{
+  font-size: 30px;
+}  
+
+.line{
+  border: 1px solid white;
+  height: 95vh;
+  float:left;
+  margin-right: 15px;
 }
 .input-container {
   display: flex;
@@ -52,25 +53,63 @@
   border-radius: 4px; /* Optional rounded corners */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.link{
+  color: white;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* hacky way to fix the line when the gallery has 2 columns*/
+@media (max-width: 1000px) {
+  .line{
+    height: 135vh;
   }
 }
 
-.card {
-  padding: 2em;
-}
+/* For small screens (less than 600px wide), collapse to a 1-column layout */
+@media (max-width: 600px) {  
+  .main-messages {
+    display: none;
+  }
 
-.read-the-docs {
-  color: #888;
+  .main-messages.open {
+    display: inline;
+  }
+
+
+  .line{
+    display: none;
+  }
+
+  .hamburger {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+    z-index: 10;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .burger {
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 10px;
+    background-color: white;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+  }
+
+  /*for hamburger animation */
+  .hamburger.open .burger:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.open .burger:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open .burger:nth-child(3) {
+    transform: rotate(-45deg);
+  }
 }

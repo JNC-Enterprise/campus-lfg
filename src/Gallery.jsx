@@ -1,4 +1,3 @@
-import React from 'react';
 import './Gallery.css';
 import images from '../backend/mock/gameData.json'
 

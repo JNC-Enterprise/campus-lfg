@@ -20,13 +20,6 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <div>
-        <img
-          src = "https://assets.xboxservices.com/assets/4e/bc/4ebcb533-e184-42f3-833b-9aa47a81f39e.jpg?n=153142244433_Poster-Image-1084_1920x720.jpg"
-          alt = "Valorant Close Beta Promo"
-          style = {{width: '100%', height: 'auto'}}
-        />
-      </div>
       <h1>Vite + React</h1>
       <Login />
       <div className="card">

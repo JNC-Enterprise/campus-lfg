@@ -1,4 +1,3 @@
-import React from 'react';
 import './Messages.css';
 import messages from '../backend/mock/messages.json'
 

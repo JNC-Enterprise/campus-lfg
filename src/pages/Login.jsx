@@ -1,5 +1,6 @@
 import './Login.css'
 import React, { useState } from 'react'
+import axios from 'axios'
 
 function Login() {
   const [username, setUsername] = useState('')
@@ -13,10 +14,16 @@ function Login() {
     setPassword(event.target.value)
   }
 
-  const handleLogin = () => {
-    // Do any logic/verification here
-    alert(`Loging in as: ${username}\nPassword you entered: ${password}`)
+  //check if the username and password are correct
+  const handleLogin = (event) => {
+    event.preventDefault()
+    axios.post('/api/login', {email: username, user_password: password})
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
   }
+
+  
+
   return(
     <div className="input-container">
       <div className="login-form">

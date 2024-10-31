@@ -3,7 +3,8 @@
 }
 
 .group-game-selector{
-    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
@@ -11,6 +12,8 @@
 }
 
 .group-rank-selector{
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
@@ -18,6 +21,8 @@
 }
 
 .group-mode-selector{
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
@@ -25,6 +30,8 @@
 }
 
 .group-players-selector{
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
@@ -32,6 +39,8 @@
 }
 
 .group-title-selector{
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
@@ -39,6 +48,8 @@
 }
 
 .group-done-button{
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: 1px solid #084B17;
     border-radius: 8px;
     color:#FFFFFF;

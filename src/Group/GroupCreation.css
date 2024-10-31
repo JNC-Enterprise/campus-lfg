@@ -1,0 +1,46 @@
+.group-creation-container{
+    background-color: #0d1538;
+}
+
+.group-game-selector{
+    margin: 5px;
+    border: 1px solid #797D7F;
+    border-radius: 8px;
+    color:#FFFFFF;
+    background-color: #797D7F;
+}
+
+.group-rank-selector{
+    border: 1px solid #797D7F;
+    border-radius: 8px;
+    color:#FFFFFF;
+    background-color: #797D7F;
+}
+
+.group-mode-selector{
+    border: 1px solid #797D7F;
+    border-radius: 8px;
+    color:#FFFFFF;
+    background-color: #797D7F;
+}
+
+.group-players-selector{
+    border: 1px solid #797D7F;
+    border-radius: 8px;
+    color:#FFFFFF;
+    background-color: #797D7F;
+}
+
+.group-title-selector{
+    border: 1px solid #797D7F;
+    border-radius: 8px;
+    color:#FFFFFF;
+    background-color: #797D7F;
+}
+
+.group-done-button{
+    border: 1px solid #084B17;
+    border-radius: 8px;
+    color:#FFFFFF;
+    background-color: #084B17;
+}

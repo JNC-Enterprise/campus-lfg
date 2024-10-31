@@ -18,6 +18,40 @@ body{
   float:left;
   margin-right: 15px;
 }
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  background-color: #021824; /* Optional background color */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px; /* Fixed width */
+  padding: 20px; /* Optional padding for the form */
+  border: 1px solid #ccc; /* Optional border */
+  border-radius: 8px; /* Optional rounded corners */
+}
+
+.input-group {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+}
+
+.label {
+  width: 100px; /* Fixed width for labels */
+  margin: 0; /* Remove margin */
+}
+
+.input {
+  flex: 1; /* Take remaining space */
+  margin: 0; /* Remove margin */
+  padding: 8px; /* Padding inside the input field */
+  border: 1px solid #e70000; /* Border for the input */
+  border-radius: 4px; /* Optional rounded corners */
+}
 
 .link{
   color: white;

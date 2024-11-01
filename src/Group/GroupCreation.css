@@ -1,57 +1,83 @@
 .group-creation-container{
-    background-color: #0d1538;
+    display: flex;
+    flex-direction: column;
+    background-color: #1C2833;
+    align-items: center;
 }
 
-.group-game-selector{
+.group-creator-text{
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
     background-color: #797D7F;
+    font-size: 30px;
+    font-weight: bold;
+    height:50px;
+}
+.group-game-selector{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #797D7F;
+    border-radius: 8px;
+    color:#FFFFFF;
+    background-color: #797D7F;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .group-rank-selector{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
     background-color: #797D7F;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .group-mode-selector{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
     background-color: #797D7F;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .group-players-selector{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
     background-color: #797D7F;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .group-title-selector{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
     background-color: #797D7F;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .group-done-button{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     border: 1px solid #084B17;
     border-radius: 8px;
     color:#FFFFFF;
     background-color: #084B17;
+    font-size: 30px;
+    font-weight: bold;
 }

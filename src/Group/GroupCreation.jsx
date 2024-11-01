@@ -6,21 +6,23 @@ function GroupCreation() {
   /* Should eventually make these drop down menus */
   return(
     <div className='group-creation-container'>
-      <h1>Group Creation</h1>
+      <button /*onClick={}*/ className='group-creator-text'>
+      CREATE GROUP
+      </button>
       <button /*onClick={}*/ className='group-game-selector'>
-      Select Game
+      SELECT GAME
       </button>
       <button /*onClick={}*/ className='group-rank-selector'>
-      Select Rank
+      SELECT RANK
       </button>
       <button /*onClick={}*/ className='group-mode-selector'>
-      Select Mode
+      SELECT MODE
       </button>
       <button /*onClick={}*/ className='group-players-selector'>
-      Number of Players
+      # OF PLAYERS
       </button>
       <button /*onClick={}*/ className='group-title-selector'>
-      Enter Group Title
+      &lt;ENTER GROUP TITLE&gt;
       </button>
       <button /*onClick={}*/ className='group-done-button'>
       DONE

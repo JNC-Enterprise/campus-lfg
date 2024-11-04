@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full height of the viewport */
-    width: 100vh;
     background-color: #0d1538; /* Optional background color */
 }
 

@@ -29,6 +29,7 @@ function Registration() {
       <div className="login-form">
         <div>
           <label className="login-label">USERNAME </label>
+          <br />
           <input 
             className="login-input" 
             type="text" 
@@ -48,6 +49,7 @@ function Registration() {
         </div>
         <div >
           <label className="login-label">PASSWORD </label>
+          <br />
           <input 
             className="login-input" 
             type="password"
@@ -57,7 +59,7 @@ function Registration() {
             />
         </div>
         <div >
-          <label className="login-label">PASSWORD </label>
+          <label className="login-label">RE-ENTER PASSWORD </label>
           <input 
             className="login-input" 
             type="password"

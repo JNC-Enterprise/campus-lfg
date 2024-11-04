@@ -1,7 +1,15 @@
 import './Groups.css'
 
-const Groups = () => { 
+const Groups = () => {
+  return (
+  <>
+    <div>
+      Hello
+    </div>
+  </>
+    
   
+  )
 }
 
 export default Groups;

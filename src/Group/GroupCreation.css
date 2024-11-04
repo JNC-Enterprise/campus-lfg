@@ -1,8 +1,17 @@
+.group-creation-page{
+    display: flex;
+    flex-direction: column;
+    background-color: #0e141a;
+    align-items: center;
+}
+
 .group-creation-container{
     display: flex;
     flex-direction: column;
     background-color: #1C2833;
     align-items: center;
+    border: 1px solid #797D7F;
+    border-radius: 10px;
 }
 
 .group-creator-text{

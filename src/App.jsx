@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import './pages/Login.css';
 import Login from './pages/Login.jsx';
+import Registration from './pages/Registration.jsx';
 import Messages from './Messages';
 import Gallery from './Gallery';
 
@@ -33,7 +34,7 @@ const App = () => {
       <Gallery />
       
       <div>
-        <Login />
+        <Registration />
       </div>
     </div>
   );

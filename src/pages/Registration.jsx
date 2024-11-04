@@ -4,10 +4,15 @@ import axios from 'axios'
 
 function Registration() {
   const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value)
+  }
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value)
   }
 
   const handlePasswordChange = (event) => {
@@ -15,11 +20,11 @@ function Registration() {
   }
 
   //check if the username and password are correct
-  const handleLogin = (event) => {
+  const handleRegister = (event) => {
     event.preventDefault()
-    axios.post('/api/login', {email: username, user_password: password})
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    axios.post('/api/register', {email, user_password: password, username: username})
+    .then(res => console.log(res.data.message))
+    .catch(err => console.log(err.response.data.message))
   }
 
   
@@ -43,6 +48,8 @@ function Registration() {
           <input
             className="login-input"
             type="text"
+            value = {email}
+            onChange = {handleEmailChange}
             placeholder='Enter your school email'
           />
         </div>
@@ -67,7 +74,7 @@ function Registration() {
             />
         </div>
         <div className="button-container">
-          <button onClick={handleLogin} className="login-button">
+          <button onClick={handleRegister} className="login-button">
           REGISTER
           </button>
         </div>

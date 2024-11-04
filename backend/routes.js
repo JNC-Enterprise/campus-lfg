@@ -15,20 +15,21 @@ Router.post('/register', async (req, res) => {
     }
 
     // Encrypt password with a salted hash
-    const hashedPassword = await bcrypt.hash(user_password, 10);
+    //const hashedPassword = await bcrypt.hash(user_password, 10);
     // Query to insert email and hashed password into the Account table
     const query = 'INSERT INTO Account (email, user_password) VALUES (?, ?)';
 
     // Send the query to the database
-    db.query(query, [email, hashedPassword], (err, result) => {
+    db.query(query, [email, user_password], async(err, result) => {
         // Handle internal server error (status 500)
+
         if (err) return res.status(500).json(err);
-        
+
         const accountId = result.insertId; // Retrieve the newly created account ID
         // Prepare to insert the username into the User table
         const userQuery = 'INSERT INTO User (account_id, username) VALUES (?, ?)';
         // Send the query and check for errors
-        db.query(userQuery, [accountId, username], (err) => {
+        db.query(userQuery, [accountId, username], async(err) => {
             // Handle internal server error (status 500)
             if (err) return res.status(500).json(err);
             // Respond with status 201 for successful creation
@@ -41,7 +42,6 @@ Router.post('/register', async (req, res) => {
 Router.post('/login', (req, res) => {
     // Grab user input for email and password
     const { email, user_password } = req.body;
-    console.log("Received email", email);
     // Query to get the account based on the provided email
     const query = 'SELECT * FROM Account WHERE email = ?';
     
@@ -54,8 +54,6 @@ Router.post('/login', (req, res) => {
 
         // Grab the account information from the results
         const account = results[0];
-        console.log("Received password:", user_password);
-        console.log("Stored password:", account.user_password);
         // Check if the provided password matches the hashed password in the database
         //const match = await bcrypt.compare(user_password, account.user_password);
         if (user_password !== account.user_password) {
@@ -70,5 +68,7 @@ Router.post('/login', (req, res) => {
         // res.json({ token });
     });
 });
+
+
 
 module.exports = Router;

@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 
 //Use parser to handle requests that way it can translate the contents into a javascript object 
-app.use(express.json());
+app.use(bodyParser.json());
 
 //Set the app to use the routes file to process requests and prefixes them using /api
 app.use('/api', routes);

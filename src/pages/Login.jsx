@@ -1,33 +1,38 @@
 import './Login.css'
 import React, { useState } from 'react'
+import axios from 'axios'
 
 function Login() {
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value)
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value)
   }
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value)
   }
 
-  const handleLogin = () => {
-    // Do any logic/verification here
-    alert(`Loging in as: ${username}\nPassword you entered: ${password}`)
+  //check if the email and password are correct
+  const handleLogin = (event) => {
+    event.preventDefault()
+    axios.post('/api/login', {email, user_password: password})
+    .then(res => console.log(res.data.message))
+    .catch(err => console.log(err))
   }
+
   return(
     <div className="input-container">
       <div className="login-form">
         <div>
-          <label className="login-label">USERNAME </label>
+          <label className="login-label">Email </label>
           <input 
             className="login-input" 
             type="text" 
-            value = {username} 
-            onChange = {handleUsernameChange}
-            placeholder ='Enter your username'
+            value = {email} 
+            onChange = {handleEmailChange}
+            placeholder ='Enter your email'
           />
         </div>
         <div >

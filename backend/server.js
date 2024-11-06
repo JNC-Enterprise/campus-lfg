@@ -2,12 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const routes = require('./routes');
+const cors = require('cors');
 
 //set environment variables
 dotenv.config();
 
 //Use express framework for website
 const app = express();
+app.use(cors());
 
 //Use parser to handle requests that way it can translate the contents into a javascript object 
 app.use(bodyParser.json());

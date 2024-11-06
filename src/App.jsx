@@ -1,42 +1,16 @@
-import { useState } from 'react';
-import './App.css';
-import './Login.css'
-import Login from './Login.jsx'
-import Messages from './Messages';
-import Gallery from './Gallery';
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/Login";
+import HomePage  from "./pages/Home";
+import Registration from "./pages/Registration";
 
-const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
+function App() {
   return (
-    <div className='main-layout'>
-
-      <div className={`main-messages ${isOpen ? 'open' : ''}`}>
-        <div className='message-header'> 
-          Messages 
-        </div>
-        <Messages />
-      </div>
-
-      <div className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
-        <div className="burger"></div>
-        <div className="burger"></div>
-        <div className="burger"></div>
-      </div>
-
-      <div className='line'></div>
-      
-      <Gallery />
-      
-      <div>
-        <Login />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<Registration />} />
+    </Routes>
   );
-};
+}
 
 export default App;

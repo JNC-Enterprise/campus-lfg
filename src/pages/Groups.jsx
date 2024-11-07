@@ -1,5 +1,6 @@
 import './Groups.css'
-import gameData from '../../backend/mock/gameData.json'
+import images from '../../backend/mock/gameData.json'
+import groupsData from "../../backend/mock/groupsData.json"
 
 const Groups = (gameName) => {
   
@@ -8,15 +9,36 @@ const Groups = (gameName) => {
   return (
   <>
     {images.map((image, index) => (
-      <div className="image-container" key={index}>
-        <img src={image.image} alt={image.description} className="image"/>
-        <a href={image.image} className="link">
-          <div className="overlay">
-              <div>{image.description}</div>
-          </div>
-        </a>
-      </div>
+      image.description === gameName ? (
+          <div key={index}>
+            {image.description}
+          </div> 
+      ) : (null)
     ))}
+    <table>
+      <thead>
+        <tr className='table-header'>
+          <th>Profile Picture</th>
+          <th>Group Title</th>
+          <th>Rating</th>
+          <th>Spots Left</th>
+          <th>Type of Game</th>
+        </tr>
+      </thead>
+      <tbody>
+        {groupsData.map((group, index) => (
+          group.game === gameName ? (
+            <tr key={index}>
+              <td><img src={group.profilePicture} alt={group.groupTitle} className="profile-picture"/></td>
+              <td>{group.groupTitle}</td>
+              <td>{group.rating}</td>
+              <td>{group.spotsLeft}</td>
+              <td>{group.game}</td>
+            </tr>
+          ) : (null)
+        ))}
+      </tbody>
+    </table>
   </>
   )
 }

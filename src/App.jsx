@@ -7,8 +7,9 @@ import Groups from "./pages/Groups";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Groups />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/groups" element={<Groups />} />
       <Route path="/register" element={<Registration />} />
     </Routes>
   );

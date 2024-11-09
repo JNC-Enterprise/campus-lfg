@@ -15,8 +15,9 @@ const Groups = (gameName) => {
   <>
     {images.map((image, index) => (
       image.description === gameName ? (
-          <div key={index}>
-            {image.description}
+          <div key={index} className="game-header">
+            <h1 className="game-title">{image.description}</h1>
+            <button className="add-group-button">+ Add Group</button>
           </div> 
       ) : (null)
     ))}

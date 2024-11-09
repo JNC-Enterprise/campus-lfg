@@ -43,7 +43,7 @@ tbody tr:nth-child(even):hover {
     background-color: #333333;
 }
 
-/* Make sure each column has a minimum width */
+
 th:nth-child(1), td:nth-child(1) { width: 15%; } /* Profile Picture */
 th:nth-child(2), td:nth-child(2) { width: 30%; } /* Group Title */
 th:nth-child(3), td:nth-child(3) { width: 15%; } /* Rating */
@@ -53,8 +53,8 @@ th:nth-child(5), td:nth-child(5) { width: 20%; } /* Type of Game */
 @media screen and (min-width: 1000px) {
     table {
         width: 80%;
-        margin: 20px auto; /* centers the table and adds vertical margin */
-        max-width: 1500px; /* prevents the table from getting too wide */
+        margin: 20px auto;
+        max-width: 1500px; 
     }
 }
 
@@ -77,4 +77,58 @@ tbody tr.clickable-row:active {
     transform: scale(0.99); /* Slight press effect when clicked */
 }
 
+.add-group-button {
+    background-color: #1a1a1a;
+    color: white;
+    border: 2px solid #333;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 20px;
+    font-family: 'Fredoka', sans-serif;
+}
 
+.add-group-button:hover {
+    background-color: #333;
+}
+
+.game-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.game-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Adjust button margin to work with flex layout */
+.add-group-button {
+    margin-left: 20px;
+}
+
+/* Make header responsive */
+@media screen and (max-width: 600px) {
+    .game-header {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .add-group-button {
+        margin-left: 0;
+    }
+
+    
+}

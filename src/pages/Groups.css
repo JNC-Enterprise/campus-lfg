@@ -2,8 +2,79 @@ body {
     background-color: black;
 }
 
-.table-header{
- 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #1a1a1a;
+    font-weight: bold;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Add hover effect on table rows */
+tbody tr:hover {
+    background-color: #333333;
+    transition: background-color 0.3s ease;
+}
+
+/* Add alternating row colors */
+tbody tr:nth-child(even) {
+    background-color: #222222;
+}
+tbody tr:nth-child(even):hover {
+    background-color: #333333;
+}
+
+/* Make sure each column has a minimum width */
+th:nth-child(1), td:nth-child(1) { width: 15%; } /* Profile Picture */
+th:nth-child(2), td:nth-child(2) { width: 30%; } /* Group Title */
+th:nth-child(3), td:nth-child(3) { width: 15%; } /* Rating */
+th:nth-child(4), td:nth-child(4) { width: 20%; } /* Spots Left */
+th:nth-child(5), td:nth-child(5) { width: 20%; } /* Type of Game */
+
+@media screen and (min-width: 1000px) {
+    table {
+        width: 80%;
+        margin: 20px auto; /* centers the table and adds vertical margin */
+        max-width: 1500px; /* prevents the table from getting too wide */
+    }
+}
+
+.clickable-row {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.clickable-row:hover {
+    transform: scale(1.01); /* Slight zoom effect on hover */
+}
+
+/* Modify existing hover style to be more interactive */
+tbody tr.clickable-row:hover {
+    background-color: #333333;
+    transition: all 0.3s ease;
+}
+
+tbody tr.clickable-row:active {
+    transform: scale(0.99); /* Slight press effect when clicked */
 }
 
 

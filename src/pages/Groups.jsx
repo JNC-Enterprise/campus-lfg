@@ -6,6 +6,11 @@ const Groups = (gameName) => {
   
   // delete it in prod  
   gameName = "Valorant";
+
+  const handleRowClick = () => {
+    window.location.href = '.';
+  };
+
   return (
   <>
     {images.map((image, index) => (
@@ -17,7 +22,7 @@ const Groups = (gameName) => {
     ))}
     <table>
       <thead>
-        <tr className='table-header'>
+        <tr>
           <th>Profile Picture</th>
           <th>Group Title</th>
           <th>Rating</th>
@@ -28,13 +33,13 @@ const Groups = (gameName) => {
       <tbody>
         {groupsData.map((group, index) => (
           group.game === gameName ? (
-            <tr key={index}>
-              <td><img src={group.profilePicture} alt={group.groupTitle} className="profile-picture"/></td>
-              <td>{group.groupTitle}</td>
-              <td>{group.rating}</td>
-              <td>{group.spotsLeft}</td>
-              <td>{group.game}</td>
-            </tr>
+              <tr key={index} onClick={handleRowClick} className="clickable-row">
+                <td><img src={group.profilePicture} alt={group.groupTitle} className="profile-picture"/></td>
+                <td>{group.groupTitle}</td>
+                <td>{group.rating}</td>
+                <td>{group.spotsLeft}</td>
+                <td>{group.game}</td>
+              </tr>
           ) : (null)
         ))}
       </tbody>

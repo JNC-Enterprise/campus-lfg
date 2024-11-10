@@ -56,11 +56,12 @@
 .register-button {
     width: 100%;
     padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: #4CAF50; /* Optional green background */
-    color: #ffffff; /* White text */
-    border: none;
+    margin-top: 10px;
+    font-family: Fredoka;
+    font-size: 25px;
+    background-color: #377a37; /* Optional green background */
+    color: black; /* White text */
+    border: 1px solid #377a37;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -78,9 +79,8 @@
 .checkmark {
     color: green;
     position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 35vw;
+    top: 43vh;
 }
 
 .error-text {

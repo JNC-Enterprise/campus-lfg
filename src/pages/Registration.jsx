@@ -70,7 +70,7 @@ function Registration() {
         <div>
           <label className="register-label">EMAIL</label>
           <br />
-          <div className="input-container">
+          <div >
             <input
               className={`register-input ${emailTouched && !isEmailValid ? 'input-error' : ''}`}
               type="text"
@@ -111,8 +111,8 @@ function Registration() {
             <span className="error-text">Passwords do not match</span>
           )}
         </div>
-        <button onClick={handleRegister} disabled={!isEmailValid || !doPasswordsMatch}>
-          Register
+        <button className="register-button" onClick={handleRegister} disabled={!isEmailValid || !doPasswordsMatch}>
+          REGISTER
         </button>
       </div>
     </div>

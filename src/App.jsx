@@ -2,12 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/Login";
 import HomePage  from "./pages/Home";
 import Registration from "./pages/Registration";
+import Groups from "./pages/Groups";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/groups" element={<Groups />} />
       <Route path="/register" element={<Registration />} />
     </Routes>
   );

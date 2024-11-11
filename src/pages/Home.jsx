@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Home.css';
-import Messages from '../Messages';
+import Messages from './Messages';
 import Gallery from '../Gallery';
 
 

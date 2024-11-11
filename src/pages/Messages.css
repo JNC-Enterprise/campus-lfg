@@ -50,8 +50,54 @@
     z-index: 9999;
     background: rgba(32, 32, 32, 1);
     display: flex;
+    flex-direction: column;
     color: white;
     font-size: 20px;
+}
+
+.messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 5px 0;
+}
+
+.sender {
+    align-self: flex-end;
+    background-color: #0084ff;
+    margin-left: auto;
+}
+
+.receiver {
+    align-self: flex-start;
+    background-color: #3a3b3c;
+    margin-right: auto;
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+}
+
+.message-header .profile-pic {
+    margin-right: 15px;
+    margin-left: 35px;
+}
+
+.message-header .group-name {
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .cross-exit{
@@ -74,6 +120,8 @@
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #3a3b3c;
 }
 
 .input-box{
@@ -84,4 +132,3 @@
     outline: none;
     font-size: 15px;
 }
-

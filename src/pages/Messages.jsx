@@ -6,6 +6,7 @@ import messageOverlay from '../../backend/mock/messageOverlay.json';
 const Messages = () => {
   const [showOverlay, setshowOverlay] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState(null);
+  const [chatMessages, setChatMessages] = useState(messageOverlay);
 
   const handlePopOut = (message, e) => {
     e.preventDefault();
@@ -21,7 +22,14 @@ const Messages = () => {
 
   const handleInputSubmit = () => {
     if (inputValue.trim()) {
-      console.log(inputValue);
+      const newMessage = {
+        profile: selectedGroup.profile,
+        groupName: selectedGroup.groupName,
+        message: inputValue.trim(),
+        sender: true
+      };
+
+      setChatMessages(prevMessages => [...prevMessages, newMessage]);
       setInputValue('');
     }
   };
@@ -59,7 +67,7 @@ const Messages = () => {
           </div>
 
           <div className='messages-container'>
-            {messageOverlay.map((message, index) => (
+            {chatMessages.map((message, index) => (
               <div 
                 key={index} 
                 className={`message-bubble ${message.sender ? 'sender' : 'receiver'}`}

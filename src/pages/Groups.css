@@ -98,7 +98,6 @@ tbody tr.clickable-row:active {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
     margin-bottom: 20px;
     width: 100%;
 }
@@ -124,6 +123,7 @@ tbody tr.clickable-row:active {
         flex-direction: column;
         gap: 15px;
         width: 100%;
+        padding: 0px;
     }
     
     .add-group-button {
@@ -131,4 +131,80 @@ tbody tr.clickable-row:active {
     }
 
     
+}
+
+/* Add responsive table styles */
+@media screen and (max-width: 768px) {
+    table {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    /* Convert table to cards on mobile */
+    table, thead, tbody, tr, th, td {
+        display: block;
+    }
+
+    thead {
+        display: none; /* Hide table headers on mobile */
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: #1a1a1a;
+    }
+
+    td {
+        text-align: left;
+        padding: 8px 15px;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    /* Add labels for each cell */
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    /* Adjust column widths for mobile */
+    th:nth-child(n), td:nth-child(n) {
+        width: 50%;
+    }
+
+    /* Adjust profile picture for mobile */
+    .profile-picture {
+        margin: 10px auto;
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Adjust row hover effects for mobile */
+    .clickable-row:hover {
+        transform: scale(1.005); /* Reduce zoom effect on mobile */
+    }
+
+    tbody tr.clickable-row:active {
+        transform: scale(0.995);
+    }
+}
+
+/* Adjust game header for smaller screens */
+@media screen and (max-width: 480px) {
+    .game-title {
+        font-size: 1.8rem;
+    }
+
+    .add-group-button {
+        width: 90%;
+        margin: 10px auto;
+        
+    }
 }

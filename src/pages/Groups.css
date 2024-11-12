@@ -176,7 +176,7 @@ tbody tr.clickable-row:active {
 
     /* Adjust column widths for mobile */
     th:nth-child(n), td:nth-child(n) {
-        width: 50%;
+        width: 75%;
     }
 
     /* Adjust profile picture for mobile */
@@ -205,6 +205,5 @@ tbody tr.clickable-row:active {
     .add-group-button {
         width: 90%;
         margin: 10px auto;
-        
     }
 }

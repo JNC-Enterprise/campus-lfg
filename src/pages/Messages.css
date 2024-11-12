@@ -1,0 +1,154 @@
+.messages{
+    float: left;
+    margin-right: 10px;
+}
+
+.actual-messages{
+    background-color:grey;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    height:50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding-left: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.actual-messages:hover{
+    background-color: #4d4d4d;
+    text-decoration: none;
+}
+  
+.profile-pic{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    float: left;
+    object-fit: cover;
+}
+
+.message-text{
+    color: white;
+    float: right;
+    width: 160px;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-overlay{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    z-index: 9999;
+    background: rgba(32, 32, 32, 1);
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+.messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 5px 0;
+}
+
+.sender {
+    align-self: flex-end;
+    background-color: #0084ff;
+    margin-left: auto;
+}
+
+.receiver {
+    align-self: flex-start;
+    background-color: #3a3b3c;
+    margin-right: auto;
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+}
+
+.message-header .profile-pic {
+    margin-right: 15px;
+}
+
+.message-header .group-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.cross-exit{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cross-exit-button{
+    background-color: #3a3b3c;
+    border: none;
+    color: #e4e6eb;
+    font-size: 18px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.cross-exit-button:hover{
+    background-color: #4d4d4d;
+    transform: scale(1.05);
+}
+
+.cross-exit-button:active{
+    transform: scale(0.95);
+}
+
+.message-box{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #3a3b3c;
+}
+
+.input-box{
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}

@@ -38,10 +38,10 @@ const Groups = (gameName) => {
                 <td data-label="Profile Picture">
                     <img src={group.profilePicture} alt="Profile" className="profile-picture" />
                 </td>
-                <td data-label="Group Title">{group.title}</td>
+                <td data-label="Group Title">{group.groupTitle}</td>
                 <td data-label="Rating">{group.rating}</td>
                 <td data-label="Spots Left">{group.spotsLeft}</td>
-                <td data-label="Game Type">{group.gameType}</td>
+                <td data-label="Game Type">{group.game}</td>
               </tr>
           ) : (null)
         ))}

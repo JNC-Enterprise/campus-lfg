@@ -1,12 +1,9 @@
 .gallery {
-    /* makes a 3x3 grid */
+    /* 3-column grid */
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 2vw;
-
-    /* centers the items horizontally */
-    justify-items: center; 
-    /* centers the items vertically */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vw;
+    justify-items: center;
     align-items: center;
 }
 
@@ -14,40 +11,19 @@
     position: relative;
     width: 384px;
     height: 216px;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden; /* Ensures rounded corners apply to overlay as well */
 }
 
 .image {
     width: 100%;
-    height: 216px;
+    height: 100%;
+    object-fit: cover;
     border-radius: 20px;
-    aspect-ratio: 16/9;
 }
 
-
-/* For medium screens (less than 900px wide), collapse to a 2x2 grid */
-@media (max-width: 1000px) {
-    .gallery {
-      grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 600px) {
-    .gallery {
-        grid-template-columns: 1fr;
-        float: none;
-    }
-    .image-container {
-        width: 100%;
-        height: 100%;
-      }
-    .image {
-        width: 100%;
-        height: 100%;
-    }
-}
-
-/* for hover effect */
+/* Overlay styling */
 .overlay {
     position: absolute;
     border-radius: 20px;
@@ -61,9 +37,34 @@
     justify-content: center;
     align-items: center;
     transition: opacity 0.3s ease;
-  }
+}
+
+.overlay-text {
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+}
 
 .image-container:hover .overlay {
     opacity: 1;
 }
-  
+
+/* For medium screens (less than 1000px wide), switch to a 2-column grid */
+@media (max-width: 1000px) {
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* For small screens (less than 600px wide), use a single-column grid */
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    .image-container {
+        width: 100%;
+    }
+    .image {
+        width: 100%;
+    }
+}

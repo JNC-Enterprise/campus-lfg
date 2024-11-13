@@ -1,0 +1,58 @@
+[
+      {
+        "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfL4v9dW_hLm50bN8496ME4SPFoRzFMvYcuQ&s",
+        "groupTitle": "Warriors United",
+        "rating": 4.8,
+        "spotsLeft": 2,
+        "game": "League of Legends"
+      },
+      {
+        "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfL4v9dW_hLm50bN8496ME4SPFoRzFMvYcuQ&s",
+        "groupTitle": "Apex Predators",
+        "rating": 4.5,
+        "spotsLeft": 5,
+        "game": "Apex Legends"
+      },
+      {
+        "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfL4v9dW_hLm50bN8496ME4SPFoRzFMvYcuQ&s",
+        "groupTitle": "Valorant Squad",
+        "rating": 4.9,
+        "spotsLeft": 1,
+        "game": "Valorant"
+      },
+      {
+        "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfL4v9dW_hLm50bN8496ME4SPFoRzFMvYcuQ&s",
+        "groupTitle": "Valorant Squad",
+        "rating": 4.9,
+        "spotsLeft": 1,
+        "game": "Valorant"
+      },
+      {
+        "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfL4v9dW_hLm50bN8496ME4SPFoRzFMvYcuQ&s",
+        "groupTitle": "Valorant Squad",
+        "rating": 4.9,
+        "spotsLeft": 1,
+        "game": "Valorant"
+      },
+      {
+        "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfL4v9dW_hLm50bN8496ME4SPFoRzFMvYcuQ&s",
+        "groupTitle": "Valorant Squad",
+        "rating": 4.9,
+        "spotsLeft": 1,
+        "game": "Valorant"
+      },
+      {
+        "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfL4v9dW_hLm50bN8496ME4SPFoRzFMvYcuQ&s",
+        "groupTitle": "Minecraft Builders",
+        "rating": 4.3,
+        "spotsLeft": 4,
+        "game": "Minecraft"
+      },
+      {
+        "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfL4v9dW_hLm50bN8496ME4SPFoRzFMvYcuQ&s",
+        "groupTitle": "Rocket League Champs",
+        "rating": 4.7,
+        "spotsLeft": 3,
+        "game": "Rocket League"
+      }
+]

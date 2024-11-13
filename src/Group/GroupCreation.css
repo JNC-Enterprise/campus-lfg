@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    background-color: #0e141a !important;
 }
 
 .group-creation-page{
@@ -10,7 +11,9 @@ body{
 }
 
 .group-creation-container{
+    position: relative;
     opacity: 80%;
+    width: 400px;
     display: flex;
     flex-direction: column;
     background-color: #1C2833;
@@ -20,78 +23,49 @@ body{
 }
 
 .group-creator-text{
-    opacity: 80%;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 15px;
     border: 1px solid #797D7F;
     border-radius: 8px;
     color:#FFFFFF;
     background-color: #797D7F;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
-    height:50px;
+    height:63px;
 }
-.group-game-selector{
-    opacity: 80%;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #797D7F;
-    border-radius: 8px;
-    color:#FFFFFF;
-    background-color: #797D7F;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.group-rank-selector{
-    opacity: 80%;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #797D7F;
-    border-radius: 8px;
-    color:#FFFFFF;
-    background-color: #797D7F;
-    font-size: 30px;
-    font-weight: bold;
+.group-dropdown-custom{
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    border: 1px solid #797D7F !important;
+    border-radius: 8px !important;
+    color:#FFFFFF !important;
+    background-color: #797D7F !important;
+    font-size: 25px !important;
+    font-weight: bold !important;
 }
 
-.group-mode-selector{
-    opacity: 80%;
+.group-title{
+    height: 50px;
+    width: 280px;
+    margin: 0;
+    color: #FFFFFF !important;
+    background-color: #797D7F;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 25px;
+    border: 1px solid #797D7F;
     margin-top: 8px;
     margin-bottom: 8px;
-    border: 1px solid #797D7F;
-    border-radius: 8px;
-    color:#FFFFFF;
-    background-color: #797D7F;
-    font-size: 30px;
-    font-weight: bold;
 }
 
-.group-players-selector{
-    opacity: 80%;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #797D7F;
-    border-radius: 8px;
-    color:#FFFFFF;
-    background-color: #797D7F;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.group-title-selector{
-    opacity: 80%;
-    margin: 10px;
-    border: 1px solid #797D7F;
-    border-radius: 8px;
-    color:#FFFFFF;
-    background-color: #797D7F;
-    font-size: 30px;
+.group-title::placeholder{
+    color: white;
+    font-size: 25px;
     font-weight: bold;
 }
 
 .group-done-button{
-    opacity: 80%;
     margin-top: 8px;
     margin-bottom: 8px;
     border: 1px solid #084B17;
@@ -101,3 +75,20 @@ body{
     font-size: 30px;
     font-weight: bold;
 }
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px; 
+    font-size: 20px;
+    border-radius: 50%;
+    border: 0px solid black;
+    background-color: black;
+    color: white;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }

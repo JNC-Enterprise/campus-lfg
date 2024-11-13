@@ -1,0 +1,20 @@
+[
+    {
+        "profile": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2020/03/valorant-logo.jpg",
+        "groupName": "Awesome Group",
+        "message": "Hey, are we meeting today?",
+        "sender": true
+    },
+    {
+        "profile": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2020/03/valorant-logo.jpg",
+        "groupName": "Awesome Group",
+        "message": "Yes, let's meet at 5 PM.",
+        "sender": false
+    },
+    {
+        "profile": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2020/03/valorant-logo.jpg",
+        "groupName": "Awesome Group",
+        "message": "Great! See you then.",
+        "sender": true
+    }
+]

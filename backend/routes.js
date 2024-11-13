@@ -69,6 +69,63 @@ Router.post('/login', (req, res) => {
     });
 });
 
+// Group creation Route
+// Group creation route
+Router.post('/groups/create', (req, res) => {
+    const { game_id, group_name, user_id } = req.body;
+    
+    // Insert new group into Team table
+    const query = 'INSERT INTO Team (game_id, group_name, num_members) VALUES (?, ?, 1)';
+    
+    db.query(query, [game_id, group_name], (err, result) => {
+        if (err) return res.status(500).json(err);
+
+        const groupId = result.insertId; // Get the created group's ID
+        
+        // Insert the creator as the first member in the Team_Members table
+        const memberQuery = 'INSERT INTO Team_Members (group_id, user_id) VALUES (?, ?)';
+        
+        db.query(memberQuery, [groupId, user_id], (memberErr) => {
+            if (memberErr) return res.status(500).json(memberErr);
+            
+            res.status(201).json({ message: 'Group created successfully', groupId });
+        });
+    });
+});
+
+// Group joining route
+Router.post('/groups/join', (req, res) => {
+    const { group_id, user_id } = req.body;
+    
+    // Check if the user is already a member
+    const checkQuery = 'SELECT * FROM Team_Members WHERE group_id = ? AND user_id = ?';
+    
+    db.query(checkQuery, [group_id, user_id], (checkErr, checkResult) => {
+        if (checkErr) return res.status(500).json(checkErr);
+        
+        if (checkResult.length > 0) {
+            return res.status(400).json({ message: 'User is already a member of this group' });
+        }
+        
+        // Add the user to the Team_Members table
+        const joinQuery = 'INSERT INTO Team_Members (group_id, user_id) VALUES (?, ?)';
+        
+        db.query(joinQuery, [group_id, user_id], (joinErr) => {
+            if (joinErr) return res.status(500).json(joinErr);
+            
+            // Increment num_members in the Team table
+            const updateQuery = 'UPDATE Team SET num_members = num_members + 1 WHERE group_id = ?';
+            
+            db.query(updateQuery, [group_id], (updateErr) => {
+                if (updateErr) return res.status(500).json(updateErr);
+                
+                res.status(200).json({ message: 'User joined the group successfully' });
+            });
+        });
+    });
+});
+
+
 
 
 module.exports = Router;

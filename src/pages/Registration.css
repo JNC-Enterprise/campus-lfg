@@ -1,0 +1,90 @@
+/* Center the form container and apply optional background color */
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full height for better centering */
+    background-color: #0d1538; /* Optional background color */
+}
+
+/* Widen the form and add padding for a cleaner look */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    width: 400px; /* Increased width */
+    max-width: 90%; /* Ensures form is responsive on smaller screens */
+    padding: 30px; /* Increased padding */
+    background-color: #ffffff; /* Optional background for the form */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+}
+
+/* Align label and input fields properly */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* Consistent styling for labels */
+.register-label {
+    font-size: 16px;
+    margin-bottom: 5px; /* Small gap between label and input */
+    color: #333333; /* Optional text color */
+}
+
+/* Widen input fields and add padding */
+.register-input {
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+/* Center the button and add padding */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Styling for the register button */
+.register-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4CAF50; /* Optional green background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Error styling */
+.input-error {
+    border: 1px solid red;
+}
+
+.checkmark {
+    color: green;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.error-text {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+}

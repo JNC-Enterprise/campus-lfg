@@ -1,0 +1,115 @@
+/* font import */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+body{
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  font-family: 'Fredoka';
+}
+
+.message-header{
+  font-size: 30px;
+}  
+
+.line{
+  border: 1px solid white;
+  height: 95vh;
+  float:left;
+  margin-right: 15px;
+}
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  background-color: #021824; /* Optional background color */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px; /* Fixed width */
+  padding: 20px; /* Optional padding for the form */
+  border: 1px solid #ccc; /* Optional border */
+  border-radius: 8px; /* Optional rounded corners */
+}
+
+.input-group {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+}
+
+.label {
+  width: 100px; /* Fixed width for labels */
+  margin: 0; /* Remove margin */
+}
+
+.input {
+  flex: 1; /* Take remaining space */
+  margin: 0; /* Remove margin */
+  padding: 8px; /* Padding inside the input field */
+  border: 1px solid #e70000; /* Border for the input */
+  border-radius: 4px; /* Optional rounded corners */
+}
+
+.link{
+  color: white;
+  text-decoration: none;
+}
+
+/* hacky way to fix the line when the gallery has 2 columns*/
+@media (max-width: 1000px) {
+  .line{
+    height: 135vh;
+  }
+}
+
+/* For small screens (less than 600px wide), collapse to a 1-column layout */
+@media (max-width: 600px) {  
+  .main-messages {
+    display: none;
+  }
+
+  .main-messages.open {
+    display: inline;
+  }
+
+
+  .line{
+    display: none;
+  }
+
+  .hamburger {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+    z-index: 10;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .burger {
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 10px;
+    background-color: white;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+  }
+
+  /*for hamburger animation */
+  .hamburger.open .burger:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.open .burger:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open .burger:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+}

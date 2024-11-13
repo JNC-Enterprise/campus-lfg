@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
 body{
-  background-color: black;
+  background-color: black !important;
   color: white;
   font-size: 20px;
   font-family: 'Fredoka';

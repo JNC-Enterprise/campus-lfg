@@ -9,7 +9,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/groups" element={<Groups />} />
+      <Route path="/groups/:gameName" element={<Groups />} />
       <Route path="/register" element={<Registration />} />
     </Routes>
   );

@@ -1,14 +1,15 @@
 import './Groups.css'
+import { useParams } from 'react-router-dom';
 import images from '../../backend/mock/gameData.json'
 import groupsData from "../../backend/mock/groupsData.json"
 
-const Groups = (gameName) => {
+const Groups = () => {
   
-  // delete it in prod  
-  gameName = "Valorant";
+  const { gameName } = useParams();
+  const gameImage = images.find(image => image.description === gameName);
 
   const handleRowClick = () => {
-    window.location.href = '.';
+    window.location.href = `/group/${group.groupId}`;
   };
 
   return (

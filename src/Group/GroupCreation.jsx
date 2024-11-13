@@ -1,6 +1,4 @@
 import './GroupCreation.css'
-// Throwing this error "useNavigate() may be used only in the context of a <Router> component"
-// import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 

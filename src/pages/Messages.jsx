@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Messages.css';
 import messages from '../../backend/mock/messages.json';
 import messageOverlay from '../../backend/mock/messageOverlay.json';
@@ -7,12 +7,20 @@ const Messages = () => {
   const [showOverlay, setshowOverlay] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [chatMessages, setChatMessages] = useState(messageOverlay);
+  const inputRef = useRef(null);
 
   const handlePopOut = (message, e) => {
     e.preventDefault();
     setSelectedGroup(message);
     setshowOverlay(true);
   };
+
+  // auto focus on input box when overlay is shown
+  useEffect(() => {
+    if (showOverlay && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [showOverlay]);
 
   const [inputValue, setInputValue] = useState('');
 
@@ -37,6 +45,9 @@ const Messages = () => {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleInputSubmit();
+    }
+    if (e.key === 'Escape') {
+      setshowOverlay(false);
     }
   };
 
@@ -79,6 +90,7 @@ const Messages = () => {
 
           <div className='message-box'>
             <input
+              ref={inputRef}
               className='input-box'
               type="text"
               placeholder="Type a message..."

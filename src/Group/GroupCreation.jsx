@@ -2,9 +2,9 @@ import './GroupCreation.css'
 import React, { useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 
-function GroupCreation({ toggleVisibility }) {
+function GroupCreation({ toggleVisibility, defaultGame}) {
   const [groupTitle, setGroupTitle] = useState('');
-  const [selectedGame, setSelectedGame] = useState('SELECT GAME');
+  const [selectedGame, setSelectedGame] = useState(defaultGame || 'SELECT GAME');
   const [numPlayers, setNumPlayers] = useState('?');
   const [groupGamemode, setGamemode] = useState('SELECT MODE');
   const [userRank, setUserRank] = useState('SELECT RANK');
@@ -49,25 +49,9 @@ function GroupCreation({ toggleVisibility }) {
         <button onClick={toggleVisibility} className='close-button'>
           X
         </button>
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic" className="group-dropdown-custom">
-            {selectedGame}
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={() => handleSelect('VALORANT')}>VALORANT</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Overwatch 2')}>Overwatch 2</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Rainbow Six Siege')}>Rainbow Six Siege</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Fortnite')}>Fortnite</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Genshin Impact')}>Genshin Impact</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Minecraft')}>Minecraft</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Team Fortress 2')}>Team Fortress 2</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Counter Strike 2')}>Counter Strike 2</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Spellbreak')}>Spellbreak</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('PUBG')}>PUBG</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Call of Duty')}>Call of Duty</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+        <div className="group-game">
+          {selectedGame}
+        </div>
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic" className="group-dropdown-custom">
             {userRank}

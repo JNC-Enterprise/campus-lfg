@@ -34,7 +34,7 @@ const Groups = () => {
         ) : null
       ))}
 
-      {isVisible && <GroupCreation toggleVisibility={toggleVisibility} />}
+      {isVisible && <GroupCreation toggleVisibility={toggleVisibility} defaultGame={gameName}/>}
 
       <table>
         <thead>

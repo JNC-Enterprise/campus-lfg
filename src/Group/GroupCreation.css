@@ -48,13 +48,30 @@ body{
     font-weight: bold !important;
 }
 
+.group-game{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: auto + 20px;
+    margin: 0;
+    color: #FFFFFF !important;
+    background-color: #797D7F;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 30px;
+    border: 1px solid #797D7F;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 0 12px;
+}
+
 .group-title{
     height: 50px;
     width: 280px;
     margin: 0;
     color: #FFFFFF !important;
     background-color: #797D7F;
-    border: 1px solid #ccc;
     border-radius: 8px;
     font-weight: bold;
     font-size: 25px;

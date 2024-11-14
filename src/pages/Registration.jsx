@@ -13,6 +13,7 @@ function Registration() {
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [emailTouched, setEmailTouched] = useState(false);
   const [doPasswordsMatch, setDoPasswordsMatch] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
   
 
   const handleUsernameChange = (event) => {
@@ -46,9 +47,16 @@ function Registration() {
     axios.post('/api/register', { email, user_password: password, username })
       .then(res => {
         console.log(res.data.message);
-        navigate('/register');
+        navigate('/');
       })
-      .catch(err => console.log(err.response.data.message));
+      .catch(err => {
+        console.log(err.response.data.message)
+        if (err.response && err.response.data.message === 'Email is already in use') {
+          setErrorMessage('This email is already registered. Please use a different email.');
+        } else {
+          setErrorMessage('An error occurred during registration. Please try again.');
+        }
+      });
   };
 
   
@@ -111,8 +119,11 @@ function Registration() {
             <span className="error-text">Passwords do not match</span>
           )}
         </div>
-        <button className="register-button" onClick={handleRegister} disabled={!isEmailValid || !doPasswordsMatch}>
-          REGISTER
+
+        {errorMessage && <p className="error-text">{errorMessage}</p>}
+
+        <button onClick={handleRegister} disabled={!isEmailValid || !doPasswordsMatch}>
+          Register
         </button>
       </div>
     </div>

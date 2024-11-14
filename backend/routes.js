@@ -7,36 +7,37 @@ const Router = express.Router();
 // User registration route
 Router.post('/register', async (req, res) => {
     const { email, user_password, username } = req.body;
-    // Check if the email ends with .edu using a regular expression
-    const emailRegex = /^[\w\.]+@([\w-]+\.)+edu$/;
-    // Return error message if the email doesn't end in .edu
-    if (!emailRegex.test(email)) {
-        return res.status(400).json({ message: 'Email must be a valid .edu email address' });
-    }
 
-    // Encrypt password with a salted hash
-    //const hashedPassword = await bcrypt.hash(user_password, 10);
-    // Query to insert email and hashed password into the Account table
-    const query = 'INSERT INTO Account (email, user_password) VALUES (?, ?)';
+    // First, check if the email is already registered
+    const checkEmailQuery = 'SELECT * FROM Account WHERE email = ?';
+    db.query(checkEmailQuery, [email], async (err, results) => {
+        if (err) return res.status(500).json({ message: 'Database error' });
 
-    // Send the query to the database
-    db.query(query, [email, user_password], async(err, result) => {
-        // Handle internal server error (status 500)
+        if (results.length > 0) {
+            // Email already exists
+            return res.status(400).json({ message: 'Email is already in use' });
+        }
 
-        if (err) return res.status(500).json(err);
+        // Encrypt password with a salted hash if the email is unique
+        const hashedPassword = await bcrypt.hash(user_password, 10);
 
-        const accountId = result.insertId; // Retrieve the newly created account ID
-        // Prepare to insert the username into the User table
-        const userQuery = 'INSERT INTO User (account_id, username) VALUES (?, ?)';
-        // Send the query and check for errors
-        db.query(userQuery, [accountId, username], async(err) => {
-            // Handle internal server error (status 500)
+        // Insert the email and hashed password into the Account table
+        const insertAccountQuery = 'INSERT INTO Account (email, user_password) VALUES (?, ?)';
+        db.query(insertAccountQuery, [email, hashedPassword], async (err, result) => {
             if (err) return res.status(500).json(err);
-            // Respond with status 201 for successful creation
-            res.status(201).json({ message: 'User created' });
+
+            const accountId = result.insertId; // Retrieve the newly created account ID
+            
+            // Insert the username into the User table with the account ID
+            const insertUserQuery = 'INSERT INTO User (account_id, username) VALUES (?, ?)';
+            db.query(insertUserQuery, [accountId, username], (err) => {
+                if (err) return res.status(500).json(err);
+                res.status(201).json({ message: 'User created' });
+            });
         });
     });
 });
+
 
 // User login route
 Router.post('/login', (req, res) => {
@@ -50,17 +51,13 @@ Router.post('/login', (req, res) => {
         // Handle internal server error (status 500)
         if (err) return res.status(500).json(err);
         // Return 401 if no matching account is found
-        if (results.length === 0) return res.status(401).json({ message: 'Invalid credentials' });
-
+        if (results.length === 0) return res.status(401).json({ message: 'No Email Found' });
         // Grab the account information from the results
         const account = results[0];
         // Check if the provided password matches the hashed password in the database
-        //const match = await bcrypt.compare(user_password, account.user_password);
-        if (user_password !== account.user_password) {
-            return res.status(401).json({ message: 'Invalid credentials' });
-        }
+        const match = await bcrypt.compare(user_password, account.user_password);
         // Return error code 401 if the password does not match
-        //if (!match) return res.status(401).json({ message: 'Invalid credentials' });
+        if (!match) return res.status(401).json({ message: 'Incorrect Password' });
         res.json({ message: 'Login successful', userId: account.account_id });
         // // Generate a JWT token signed with the account ID
         // const token = jwt.sign({ account_id: account.account_id }, process.env.JWT_SECRET);
@@ -69,7 +66,6 @@ Router.post('/login', (req, res) => {
     });
 });
 
-// Group creation Route
 // Group creation route
 Router.post('/groups/create', (req, res) => {
     const { game_id, group_name, user_id } = req.body;

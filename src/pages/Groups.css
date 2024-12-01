@@ -20,6 +20,10 @@ th {
     font-weight: bold;
 }
 
+tr {
+    text-align: center;
+}
+
 .profile-picture {
     width: 50px;
     height: 50px;
@@ -44,7 +48,6 @@ tbody tr:nth-child(even):hover {
 }
 
 
-th:nth-child(1), td:nth-child(1) { width: 15%; } /* Profile Picture */
 th:nth-child(2), td:nth-child(2) { width: 30%; } /* Group Title */
 th:nth-child(3), td:nth-child(3) { width: 15%; } /* Rating */
 th:nth-child(4), td:nth-child(4) { width: 20%; } /* Spots Left */

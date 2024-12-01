@@ -39,9 +39,8 @@ const Groups = () => {
       <table>
         <thead>
           <tr>
-            <th>Profile Picture</th>
             <th>Group Title</th>
-            <th>Rating</th>
+            <th>Rank</th>
             <th>Spots Left</th>
             <th>Type of Game</th>
           </tr>
@@ -50,11 +49,8 @@ const Groups = () => {
           {groupsData.map((group, index) => (
             group.game === gameName ? (
               <tr key={index} onClick={() => handleRowClick(group)} className="clickable-row">
-                <td data-label="Profile Picture">
-                  <img src={group.profilePicture} alt="Profile" className="profile-picture" />
-                </td>
                 <td data-label="Group Title">{group.groupTitle}</td>
-                <td data-label="Rating">{group.rating}</td>
+                <td data-label="Rank">{group.rank}</td>
                 <td data-label="Spots Left">{group.spotsLeft}</td>
                 <td data-label="Game Type">{group.game}</td>
               </tr>

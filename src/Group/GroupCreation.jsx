@@ -1,6 +1,7 @@
 import './GroupCreation.css'
 import React, { useState, useEffect } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
+import axios from 'axios'; // Import axios to send HTTP requests
 
 function GroupCreation({ toggleVisibility, defaultGame }) {
   const [groupTitle, setGroupTitle] = useState('');
@@ -58,11 +59,11 @@ function GroupCreation({ toggleVisibility, defaultGame }) {
     "Call of Duty": [1, 2, 3, 4, 5]
   };
   
-
-
   const handleSelect = (game) => {
     setSelectedGame(game);
-    setUserRank('SELECT RANK'); // Reset rank when the game changes
+    setUserRank('SELECT RANK'); 
+    setGamemode('SELECT MODE');
+    setNumPlayers('?');// Reset rank when the game changes
   };
 
   const handleRank = (rank) => {
@@ -81,64 +82,115 @@ function GroupCreation({ toggleVisibility, defaultGame }) {
     setGroupTitle(e.target.value);
   };
 
+
+  const handleGroupCreation = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
+    // Validate that all required fields are filled
+    if (selectedGame === 'SELECT GAME' || groupTitle.trim() === '') {
+      alert('Please fill in all fields!');
+      return;
+    }
+
+    const userId = localStorage.getItem('userId')// Replace with the logged-in user's ID (you can get this from a global state or context)
+    const gameIdMap = {
+      'Valorant': 1, 
+      'Overwatch 2': 2, 
+      'Rainbow Six Siege': 3, 
+      'Fortnite': 4,
+      'Genshin Impact': 5,
+      'Minecraft': 6,
+      'Team Fortress 2': 7,
+      'Counter Strike': 8,
+      'Spellbreak': 9,
+      'PUBG': 10,
+      'Call of Duty': 11,
+      'Apex Legends': 13,
+      // Add any other games here
+    };
+
+    const gameId = gameIdMap[selectedGame]; 
+
+    const groupData = {
+      game_id: gameId,
+      group_name: groupTitle,
+      account_id: userId, // Pass the logged-in user's ID
+    };
+
+    try {
+      // Send a POST request to the backend to create the group
+      const response = await axios.post('/api/groups/create', groupData);
+      if (response.status === 201) {
+        alert('Group created successfully!');
+        toggleVisibility(); // Close the modal after creation
+        // Optionally, redirect or refresh the group list to show the new group
+        window.location.reload(); // You can also use React Router to navigate to the new group
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Failed to create the group. Please try again.');
+    }
+  };
+
   return (
-    <div>
-      <div className='group-creation-container'>
-        <button className='group-creator-text'>
-          CREATE GROUP
-        </button>
-        <button onClick={toggleVisibility} className='close-button'>
-          X
-        </button>
-        <div className="group-game">
-          {selectedGame}
-        </div>
-        
-        {/* Rank Dropdown */}
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic" className="group-dropdown-custom">
-            {userRank}
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            {rankOptions[selectedGame]?.map((rank, index) => (
-              <Dropdown.Item key={index} onClick={() => handleRank(rank)}>
-                {rank}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
+    <div className="group-creation-container">
+      <button className="group-creator-text">CREATE GROUP</button>
+      <button onClick={toggleVisibility} className="close-button">X</button>
 
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic" className="group-dropdown-custom">
-            {groupGamemode}
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            {gamemodeOptions[selectedGame]?.map((gamemode, index) => (
-              <Dropdown.Item key={index} onClick={() => handleGamemode(gamemode)}>
-                {gamemode}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
+      <div className="group-game">{selectedGame}</div>
 
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic" className="group-dropdown-custom">
-            # OF PLAYERS: {numPlayers}
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            {playersOptions[selectedGame]?.map((players, index) => (
-              <Dropdown.Item key={index} onClick={() => handlePlayers(players)}>
-                {players}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
+      {/* Rank Dropdown */}
+      <Dropdown>
+        <Dropdown.Toggle variant="success" className="group-dropdown-custom">
+          {userRank}
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          {rankOptions[selectedGame]?.map((rank, index) => (
+            <Dropdown.Item key={index} onClick={() => handleRank(rank)}>
+              {rank}
+            </Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
 
-        <input className="group-title" type="text" value={groupTitle} onChange={groupTitleChange} placeholder='<ENTER GROUP TITLE>' />
-        <button className='group-done-button' onClick={toggleVisibility}>
-          DONE
-        </button>
-      </div>
+      {/* Gamemode Dropdown */}
+      <Dropdown>
+        <Dropdown.Toggle variant="success" className="group-dropdown-custom">
+          {groupGamemode}
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          {gamemodeOptions[selectedGame]?.map((gamemode, index) => (
+            <Dropdown.Item key={index} onClick={() => handleGamemode(gamemode)}>
+              {gamemode}
+            </Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
+
+      {/* Players Dropdown */}
+      <Dropdown>
+        <Dropdown.Toggle variant="success" className="group-dropdown-custom">
+          # OF PLAYERS: {numPlayers}
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          {playersOptions[selectedGame]?.map((players, index) => (
+            <Dropdown.Item key={index} onClick={() => handlePlayers(players)}>
+              {players}
+            </Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
+
+      <input
+        className="group-title"
+        type="text"
+        value={groupTitle}
+        onChange={groupTitleChange}
+        placeholder="<ENTER GROUP TITLE>"
+      />
+      <button className="group-done-button" onClick={handleGroupCreation}>
+        DONE
+      </button>
     </div>
   );
 }

@@ -17,20 +17,33 @@ function Login() {
     setPassword(event.target.value)
   }
 
-  //check if the email and password are correct
   const handleLogin = (event) => {
-    event.preventDefault()
-    axios.post('/api/login', {email, user_password: password})
-    .then(res => 
-      {console.log(res.data.message)
-        navigate('/')
+    event.preventDefault();
+  
+    axios.post('/api/login', { email, user_password: password })
+      .then(res => {
+        // Log the success message
+        console.log(res.data.message);
+  
+        // Store the JWT token in localStorage (for subsequent API requests)
+        localStorage.setItem('authToken', res.data.token);
+  
+        // Optionally, store the userId if you need it elsewhere
+        localStorage.setItem('userId', res.data.userId);
+  
+        // Redirect to the home page or the appropriate page
+        navigate('/register');
       })
-    .catch(err => {
-      if(err.response.status === 401){
-        console.log(err.response.data.message)
-      }
-    })
-  }
+      .catch(err => {
+        if (err.response && err.response.status === 401) {
+          // Handle incorrect credentials or failed login
+          console.log(err.response.data.message);
+        } else {
+          // Handle other errors (e.g., network error)
+          console.log('An error occurred during login.');
+        }
+      });
+  };
 
   return(
     <div>

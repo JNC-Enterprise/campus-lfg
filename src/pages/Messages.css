@@ -1,61 +1,21 @@
-.messages{
+/* Ensure consistent spacing for the messages list */
+.messages {
     float: left;
     margin-right: 10px;
+    width: 250px; /* Adjust width to fit the updated UI */
+    overflow-y: auto; /* Allow scrolling if the list grows */
 }
 
-.actual-messages{
-    background-color:grey;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    width: 200px;
-    height:50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    padding-left: 5px;
-    text-decoration: none;
-    cursor: pointer;
+/* Message overlay tweaks for a better fit on different screen sizes */
+.message-overlay {
+    width: 90%; /* Ensure responsiveness on smaller screens */
+    max-width: 600px; /* Prevent it from becoming too wide */
+    max-height: 90%; /* Prevent it from overflowing on smaller screens */
+    overflow: hidden; /* Prevent unnecessary scrollbars */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
 }
 
-.actual-messages:hover{
-    background-color: #4d4d4d;
-    text-decoration: none;
-}
-  
-.profile-pic{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    float: left;
-    object-fit: cover;
-}
-
-.message-text{
-    color: white;
-    float: right;
-    width: 160px;
-    font-size: 15px;
-    justify-content: center;
-    align-items: center;
-}
-
-.message-overlay{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    z-index: 9999;
-    background: rgba(32, 32, 32, 1);
-    display: flex;
-    flex-direction: column;
-    color: white;
-    font-size: 20px;
-    border-radius: 15px;
-}
-
+/* Scrollbar for the messages container */
 .messages-container {
     flex-grow: 1;
     overflow-y: auto;
@@ -63,92 +23,56 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #4d4d4d #2a2a2a;
 }
 
-.message-bubble {
-    max-width: 70%;
-    padding: 10px 15px;
-    border-radius: 15px;
-    margin: 5px 0;
+.messages-container::-webkit-scrollbar {
+    width: 8px;
 }
 
-.sender {
-    align-self: flex-end;
-    background-color: #0084ff;
-    margin-left: auto;
+.messages-container::-webkit-scrollbar-track {
+    background: #2a2a2a;
 }
 
-.receiver {
-    align-self: flex-start;
-    background-color: #3a3b3c;
-    margin-right: auto;
-}
-
-.message-header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    position: relative;
-}
-
-.message-header .profile-pic {
-    margin-right: 15px;
-}
-
-.message-header .group-name {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.cross-exit{
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cross-exit-button{
-    background-color: #3a3b3c;
-    border: none;
-    color: #e4e6eb;
-    font-size: 18px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.cross-exit-button:hover{
+.messages-container::-webkit-scrollbar-thumb {
     background-color: #4d4d4d;
-    transform: scale(1.05);
+    border-radius: 4px;
 }
 
-.cross-exit-button:active{
-    transform: scale(0.95);
-}
-
-.message-box{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #3a3b3c;
-}
-
-.input-box{
-    width: 90%;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
+/* Message bubble refinements */
+.message-bubble {
     font-size: 15px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+/* Consistent input box positioning */
+.message-box {
+    background-color: #202020; /* Slightly darker for better contrast */
+}
+
+/* Input box focus effect */
+.input-box:focus {
+    box-shadow: 0 0 5px rgba(0, 132, 255, 0.5);
+    background-color: #282828;
+}
+
+/* Highlighting selected group in the messages list */
+.actual-messages.selected {
+    background-color: #4d4d4d;
+    border: 2px solid #0084ff; /* Add a highlight for the active group */
+}
+
+/* Ensure the cross exit button is accessible and interactive */
+.cross-exit-button:focus {
+    outline: 2px solid #0084ff;
+}
+
+/* Hover effect for the group name in the header */
+.group-name:hover {
+    color: #0084ff;
+    cursor: pointer;
+    text-decoration: underline;
 }

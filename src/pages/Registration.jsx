@@ -2,6 +2,7 @@ import './Registration.css'
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react'
 import axios from 'axios'
+import Navbar from "./Navbar.jsx";
 
 function Registration() {
   const navigate = useNavigate();
@@ -62,69 +63,72 @@ function Registration() {
   
 
   return (
-    <div className="input-container">
-      <div className="register-form">
-        <div>
-          <label className="register-label">USERNAME</label>
-          <br />
-          <input
-            className="register-input"
-            type="text"
-            value={username}
-            onChange={handleUsernameChange}
-            placeholder="Enter your username"
-          />
-        </div>
-        <div>
-          <label className="register-label">EMAIL</label>
-          <br />
-          <div >
+    <div>
+      <Navbar/>
+      <div className="input-container">
+        <div className="register-form">
+          <div>
+            <label className="register-label">USERNAME</label>
+            <br />
             <input
-              className={`register-input ${emailTouched && !isEmailValid ? 'input-error' : ''}`}
+              className="register-input"
               type="text"
-              value={email}
-              onChange={handleEmailChange}
-              onBlur={handleEmailBlur}
-              placeholder="Enter your school email"
+              value={username}
+              onChange={handleUsernameChange}
+              placeholder="Enter your username"
             />
-            {isEmailValid ? (
-              <span className="checkmark">✔️</span>
-            ) : (
-              emailTouched && <span className="error-text">Email must end with .edu</span>
+          </div>
+          <div>
+            <label className="register-label">EMAIL</label>
+            <br />
+            <div >
+              <input
+                className={`register-input ${emailTouched && !isEmailValid ? 'input-error' : ''}`}
+                type="text"
+                value={email}
+                onChange={handleEmailChange}
+                onBlur={handleEmailBlur}
+                placeholder="Enter your school email"
+              />
+              {isEmailValid ? (
+                <span className="checkmark">✔️</span>
+              ) : (
+                emailTouched && <span className="error-text">Email must end with .edu</span>
+              )}
+            </div>
+          </div>
+          <div>
+            <label className="register-label">PASSWORD</label>
+            <br />
+            <input
+              className="register-input"
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+              placeholder="Enter your password"
+            />
+          </div>
+          <div>
+            <label className="register-label">RE-ENTER PASSWORD</label>
+            <br />
+            <input
+              className={`register-input ${!doPasswordsMatch ? 'input-error' : ''}`}
+              type="password"
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+              placeholder="Re-enter your password"
+            />
+            {!doPasswordsMatch && (
+              <span className="error-text">Passwords do not match</span>
             )}
           </div>
-        </div>
-        <div>
-          <label className="register-label">PASSWORD</label>
-          <br />
-          <input
-            className="register-input"
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            placeholder="Enter your password"
-          />
-        </div>
-        <div>
-          <label className="register-label">RE-ENTER PASSWORD</label>
-          <br />
-          <input
-            className={`register-input ${!doPasswordsMatch ? 'input-error' : ''}`}
-            type="password"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
-            placeholder="Re-enter your password"
-          />
-          {!doPasswordsMatch && (
-            <span className="error-text">Passwords do not match</span>
-          )}
-        </div>
 
-        {errorMessage && <p className="error-text">{errorMessage}</p>}
+          {errorMessage && <p className="error-text">{errorMessage}</p>}
 
-        <button onClick={handleRegister} disabled={!isEmailValid || !doPasswordsMatch}>
-          Register
-        </button>
+          <button onClick={handleRegister} disabled={!isEmailValid || !doPasswordsMatch}>
+            Register
+          </button>
+        </div>
       </div>
     </div>
   );

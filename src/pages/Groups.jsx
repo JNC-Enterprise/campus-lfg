@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import images from '../../backend/mock/gameData.json'
 import groupsData from "../../backend/mock/groupsData.json"
 import GroupCreation from "../Group/GroupCreation.jsx"
+import Navbar from "./Navbar.jsx";
 import React, { useState } from 'react';
 
 const Groups = () => {
@@ -23,6 +24,7 @@ const Groups = () => {
 
   return (
     <>
+    <Navbar/>
       {images.map((image, index) => (
         image.description === gameName ? (
           <div key={index} className="game-header">
@@ -33,9 +35,8 @@ const Groups = () => {
           </div>
         ) : null
       ))}
-
       {isVisible && <GroupCreation toggleVisibility={toggleVisibility} defaultGame={gameName}/>}
-
+      
       <table>
         <thead>
           <tr>

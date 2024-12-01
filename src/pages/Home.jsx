@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './Home.css';
 import Messages from './Messages';
 import Gallery from '../Gallery';
-
+import Navbar from "./Navbar";
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ const HomePage = () => {
 
   return (
     <div className='main-layout'>
-
+      <Navbar/>
       <div className={`main-messages ${isOpen ? 'open' : ''}`}>
         <div className='message-header'> 
           Messages 

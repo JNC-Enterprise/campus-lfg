@@ -1,46 +1,87 @@
 import './GroupCreation.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 
-function GroupCreation({ toggleVisibility }) {
+function GroupCreation({ toggleVisibility, defaultGame }) {
   const [groupTitle, setGroupTitle] = useState('');
-  const [selectedGame, setSelectedGame] = useState('SELECT GAME');
+  const [selectedGame, setSelectedGame] = useState(defaultGame || 'SELECT GAME');
   const [numPlayers, setNumPlayers] = useState('?');
   const [groupGamemode, setGamemode] = useState('SELECT MODE');
   const [userRank, setUserRank] = useState('SELECT RANK');
 
-  const groupTitleChange = (e) => {
-    setGroupTitle(e.target.value);
+  // Define rank options for each game
+  const rankOptions = {
+    "Valorant": ["Iron", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Immortal", "Radiant"],
+    "Overwatch": ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Grandmaster"],
+    "Rainbow Six Siege": ["Copper", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Champion"],
+    "Fortnite": ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Elite", "Champion", "Unreal"],
+    "Apex Legends": ["Rookie", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Apex Predator"],
+    "Genshin Impact": ["N/A"],
+    "Minecraft":["N/A"],
+    "Team Fortress 2": ["Mercenary", "Contract Killer" ,"Executioner", "Expert Assasin", "Death Merchant"],
+    "Counter Strike": ["Gray", "Light Blue", "Blue", "Purple", "Pink", "Red", "Gold"],
+    "Spellbreak": ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Legend"],
+    "PUBG": ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Crown", "Ace", "Conqueror"],
+    "Call of Duty": ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Crimson", "Iridescent", "Top 250"],
+    // Add more games with specific ranks as needed
   };
+
+  // Define Gamemode options for each game
+  const gamemodeOptions = {
+    "Valorant": ["Unrated", "Competitive", "Swiftplay", "Spike Rush", "Premier", "Deathmatch", "Team Deathmatch"],
+    "Overwatch": ["Competitive", "Deathmatch", "Capture the Flag", "PVE", "Limited Time Event"],
+    "Rainbow Six Siege": ["Competitive", "Quick Match", "Standard", "Hostage", "Bomb"],
+    "Fortnite": ["Competitive (Build)", "Competitive (No Build)", "Unrated (Build)", "Unrated (No Build)", "Creative", "Team Rumble", "Lego Fortnite", "Save the World"],
+    "Apex Legends": ["Battle Royale", "Ranked", "Control", "Gun Run", "Team Deathmatch"],
+    "Genshin Impact": ["Multiplayer"],
+    "Minecraft": ["Vanilla Minecraft", "Modded Minecraft", "Server Minigames"],
+    "Team Fortress 2": ["Casual", "Competitive", "Mann vs Machine", "Custom Server"],
+    "Counter Strike": ["Premier", "Deathmatch", "Casual", "Third Party Competitive", "Custom Server Game"],
+    "Spellbreak": ["Battle Royale (Casual)", "Battle Royale (Competitive)", "Dominion"],
+    "PUBG": ["Classic (Competitive)", "Classic (Casual)", "Arcade", "Team Deathmatch"],
+    "Call of Duty": ["Quick Play", "Competitive", "Hardcore"]
+  };
+
+  // Define # of players for each game
+  const playersOptions = {
+    "Valorant": [1, 2, 3, 4],
+    "Overwatch": [1, 2, 3, 4],
+    "Rainbow Six Siege": [1, 2, 3, 4],
+    "Fortnite": [1, 2, 3],
+    "Apex Legends": [1, 2],
+    "Genshin Impact": [1, 2, 3],
+    "Minecraft": [1, 2, 3, 4, 5, 6],
+    "Team Fortress 2": [1, 2, 3, 4, 5],
+    "Counter Strike": [1, 2, 3, 4],
+    "Spellbreak": [1, 2, 3],
+    "PUBG": [1, 2, 3],
+    "Call of Duty": [1, 2, 3, 4, 5]
+  };
+  
+
 
   const handleSelect = (game) => {
     setSelectedGame(game);
+    setUserRank('SELECT RANK'); // Reset rank when the game changes
+  };
+
+  const handleRank = (rank) => {
+    setUserRank(rank);
   };
 
   const handlePlayers = (players) => {
     setNumPlayers(players);
   };
 
-  const handleGamemode = (groupGamemode) => {
-    setGamemode(groupGamemode);
+  const handleGamemode = (gamemode) => {
+    setGamemode(gamemode);
   };
 
-  const handleRank = (userRank) => {
-    setUserRank(userRank);
+  const groupTitleChange = (e) => {
+    setGroupTitle(e.target.value);
   };
 
-  const gameSelectedCheck = (e) => {
-    if(selectedGame === 'SELECT GAME') {
-      e.preventDefault();
-      alert('Please select a game first!');
-    }
-  };
-
-  const handleGroupCreation = (e) => {
-    // Group creation logic here
-  };
-
-  return(
+  return (
     <div>
       <div className='group-creation-container'>
         <button className='group-creator-text'>
@@ -49,65 +90,57 @@ function GroupCreation({ toggleVisibility }) {
         <button onClick={toggleVisibility} className='close-button'>
           X
         </button>
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic" className="group-dropdown-custom">
-            {selectedGame}
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={() => handleSelect('VALORANT')}>VALORANT</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Overwatch 2')}>Overwatch 2</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Rainbow Six Siege')}>Rainbow Six Siege</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Fortnite')}>Fortnite</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Genshin Impact')}>Genshin Impact</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Minecraft')}>Minecraft</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Team Fortress 2')}>Team Fortress 2</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Counter Strike 2')}>Counter Strike 2</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Spellbreak')}>Spellbreak</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('PUBG')}>PUBG</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleSelect('Call of Duty')}>Call of Duty</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+        <div className="group-game">
+          {selectedGame}
+        </div>
+        
+        {/* Rank Dropdown */}
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic" className="group-dropdown-custom">
             {userRank}
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => handleRank('Immortal 3')}>Immortal 3</Dropdown.Item>
+            {rankOptions[selectedGame]?.map((rank, index) => (
+              <Dropdown.Item key={index} onClick={() => handleRank(rank)}>
+                {rank}
+              </Dropdown.Item>
+            ))}
           </Dropdown.Menu>
         </Dropdown>
+
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic" className="group-dropdown-custom">
             {groupGamemode}
           </Dropdown.Toggle>
-
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => handleGamemode("Unrated")}>Unrated</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleGamemode("Deathmatch")}>Deathmatch</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleGamemode("Swiftplay")}>Swiftplay</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleGamemode("Spike Rush")}>Spike Rush</Dropdown.Item>
-            <Dropdown.Item onClick={() => handleGamemode("Competitive")}>Competitive</Dropdown.Item>
+            {gamemodeOptions[selectedGame]?.map((gamemode, index) => (
+              <Dropdown.Item key={index} onClick={() => handleGamemode(gamemode)}>
+                {gamemode}
+              </Dropdown.Item>
+            ))}
           </Dropdown.Menu>
         </Dropdown>
+
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic" className="group-dropdown-custom">
             # OF PLAYERS: {numPlayers}
           </Dropdown.Toggle>
-
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => handlePlayers(2)}>2</Dropdown.Item>
-            <Dropdown.Item onClick={() => handlePlayers(3)}>3</Dropdown.Item>
-            <Dropdown.Item onClick={() => handlePlayers(4)}>4</Dropdown.Item>
-            <Dropdown.Item onClick={() => handlePlayers(5)}>5</Dropdown.Item>
+            {playersOptions[selectedGame]?.map((players, index) => (
+              <Dropdown.Item key={index} onClick={() => handlePlayers(players)}>
+                {players}
+              </Dropdown.Item>
+            ))}
           </Dropdown.Menu>
         </Dropdown>
-        <input className="group-title" type="text" value={groupTitle} onChange={groupTitleChange} placeholder='<ENTER GROUP TITLE>'/>
+
+        <input className="group-title" type="text" value={groupTitle} onChange={groupTitleChange} placeholder='<ENTER GROUP TITLE>' />
         <button className='group-done-button' onClick={toggleVisibility}>
           DONE
         </button>
       </div>
     </div>
   );
-};
+}
 
 export default GroupCreation;

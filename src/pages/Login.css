@@ -6,7 +6,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0d1538;
+    background-color: black !important;
 }
 
 .login-form {
@@ -46,6 +46,18 @@ body{
 .login-button{
     width: 100px;
     border-radius: 100px;
+    border: 1px solid #ccc;
     padding: 10px;
     cursor: pointer;
+}
+
+.registration-container{
+    padding: 1rem;
+}
+
+.registration-link{
+    color: lightblue;
+    text-decoration: none;
+    display:flex;
+    justify-content: center;
 }

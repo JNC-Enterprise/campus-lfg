@@ -8,11 +8,17 @@
 
 /* Message overlay tweaks for a better fit on different screen sizes */
 .message-overlay {
+    background-color: black;
+    position: fixed; /* Add fixed positioning */
+    top: 50%; /* Position from top */
+    left: 50%; /* Position from left */
+    transform: translate(-50%, -50%); /* Center the overlay */
     width: 90%; /* Ensure responsiveness on smaller screens */
     max-width: 600px; /* Prevent it from becoming too wide */
-    max-height: 90%; /* Prevent it from overflowing on smaller screens */
+    max-height: 90vh; /* Use viewport height instead of percentage */
     overflow: hidden; /* Prevent unnecessary scrollbars */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+    z-index: 1000; /* Ensure overlay appears above other content */
 }
 
 /* Scrollbar for the messages container */
@@ -48,16 +54,7 @@
     white-space: pre-wrap;
 }
 
-/* Consistent input box positioning */
-.message-box {
-    background-color: #202020; /* Slightly darker for better contrast */
-}
 
-/* Input box focus effect */
-.input-box:focus {
-    box-shadow: 0 0 5px rgba(0, 132, 255, 0.5);
-    background-color: #282828;
-}
 
 /* Highlighting selected group in the messages list */
 .actual-messages.selected {
@@ -70,9 +67,66 @@
     outline: 2px solid #0084ff;
 }
 
-/* Hover effect for the group name in the header */
+/* Group name styling */
+.group-name {
+  background-color: #333333;
+  border-radius: 10px;
+  padding: 10px;
+  width: 230px;
+  margin: 5px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Remove the hover effect that was adding the blue color and underline */
 .group-name:hover {
-    color: #0084ff;
-    cursor: pointer;
-    text-decoration: underline;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #444444;
+}
+
+/* Input box styling */
+.input-box {
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.message-box {
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.group-name-popup {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.cross-exit-button {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  margin-right: 5px;
+}
+
+.cross-exit-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.message-header-popup {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
 }

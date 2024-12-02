@@ -200,7 +200,7 @@ Router.get('/groups/user/:userId', (req, res) => {
         const userIdFromDb = getUserIdResult[0].user_id;
 
         const query = `
-            SELECT t.group_id, t.group_name, t.num_members, g.thumbnail AS game_thumbnail
+            SELECT t.group_id, t.group_name, t.num_members
             FROM Team t
             JOIN Team_Members tm ON t.group_id = tm.group_id
             JOIN Game g ON t.game_id = g.game_id

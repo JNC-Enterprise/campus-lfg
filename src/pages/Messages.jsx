@@ -126,8 +126,7 @@ const Messages = () => {
               className='group-item'
               onClick={() => handleGroupSelect(group)}
             >
-              <img src={group.profile} className='group-profile-pic' alt="Group Profile" />
-              <div className='group-name'>{group.groupName}</div>
+              <div className='group-name'>{group.group_name}</div>
             </div>
           ))
         ) : (
@@ -140,12 +139,11 @@ const Messages = () => {
       {/* Right side: display messages for the selected group */}
       {selectedGroup && (
         <div className='message-overlay'>
-          <div className='message-header'>
+          <div className='message-header-popup'>
             <div className='cross-exit'>
               <button className='cross-exit-button' onClick={() => setSelectedGroup(null)}>X</button>
             </div>
-            <img src={selectedGroup.profile} className='profile-pic' alt="Group Profile" />
-            <span className='group-name'>{selectedGroup.groupName}</span>
+            <span className='group-name-popup'>{selectedGroup.group_name}</span>
           </div>
 
           <div className='messages-container'>

@@ -1,9 +1,13 @@
 import "./Account.css";
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import Navbar from "./Navbar.jsx";
 
 function Account() {
-
+  const navigate = useNavigate();
+  const handleAccount = (event) => {
+    navigate('/');
+  }
 
   return(
     <div>
@@ -28,7 +32,7 @@ function Account() {
             />
           </div>
           <div className="button-container">
-            <button className="login-button">
+            <button className="login-button" onClick={handleAccount}>
               UPDATE
             </button>
           </div>

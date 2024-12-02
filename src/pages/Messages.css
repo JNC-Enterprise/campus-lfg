@@ -8,11 +8,20 @@
 
 /* Message overlay tweaks for a better fit on different screen sizes */
 .message-overlay {
+    background-color: black;
+    position: fixed; /* Add fixed positioning */
+    top: 50%; /* Position from top */
+    left: 50%; /* Position from left */
+    transform: translate(-50%, -50%); /* Center the overlay */
     width: 90%; /* Ensure responsiveness on smaller screens */
     max-width: 600px; /* Prevent it from becoming too wide */
-    max-height: 90%; /* Prevent it from overflowing on smaller screens */
+    height: 500px; /* Fixed smaller height */
+    max-height: 70vh; /* Reduced from 90vh to 70vh */
     overflow: hidden; /* Prevent unnecessary scrollbars */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+    z-index: 1000; /* Ensure overlay appears above other content */
+    display: flex; /* Added to control children layout */
+    flex-direction: column; /* Stack children vertically */
 }
 
 /* Scrollbar for the messages container */
@@ -25,6 +34,7 @@
     gap: 10px;
     scrollbar-width: thin;
     scrollbar-color: #4d4d4d #2a2a2a;
+    height: calc(100% - 120px); /* Increased space for input box */
 }
 
 .messages-container::-webkit-scrollbar {
@@ -46,17 +56,26 @@
     line-height: 1.5;
     word-wrap: break-word;
     white-space: pre-wrap;
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 5px 0;
 }
 
-/* Consistent input box positioning */
-.message-box {
-    background-color: #202020; /* Slightly darker for better contrast */
+/* Sender message styling (blue, right-aligned) */
+.message-bubble.sender {
+    background-color: #0084ff;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
 }
 
-/* Input box focus effect */
-.input-box:focus {
-    box-shadow: 0 0 5px rgba(0, 132, 255, 0.5);
-    background-color: #282828;
+/* Receiver message styling (grey, left-aligned) */
+.message-bubble.receiver {
+    background-color: #3a3b3c;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
 }
 
 /* Highlighting selected group in the messages list */
@@ -70,9 +89,92 @@
     outline: 2px solid #0084ff;
 }
 
-/* Hover effect for the group name in the header */
-.group-name:hover {
-    color: #0084ff;
-    cursor: pointer;
-    text-decoration: underline;
+/* Group name styling */
+.group-name {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+/* Add styling for last message */
+.last-message {
+  color: #999;
+  font-size: 0.8em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Input box styling */
+.input-box {
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.message-box {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: black; /* Match overlay background */
+  position: absolute; /* Position at bottom */
+  bottom: 0;
+  left: 0;
+}
+
+
+.group-name-popup {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.cross-exit-button {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  margin-right: 5px;
+}
+
+.cross-exit-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.message-header-popup {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+/* Update group-item styling */
+.group-item {
+  background-color: #333333;
+  border-radius: 10px;
+  padding: 5px;
+  width: 230px;
+  margin: 3px 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.group-item:hover {
+  background-color: #444444;
+}
+
+/* Center the "no groups" message as well */
+.no-groups {
+  text-align: center;
 }

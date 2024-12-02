@@ -218,7 +218,8 @@ Router.get('/groups/user/:userId', (req, res) => {
 Router.get('/messages/:groupId', (req, res) => {
     const { groupId } = req.params;
     const query = `
-        SELECT m.message_id, m.content, m.sender_id, m.created_at, u.username AS sender_username
+        SELECT m.message_id, m.content, m.sender_id, m.created_at, 
+               u.username AS sender_username, u.profile_picture
         FROM Message m
         JOIN User u ON m.sender_id = u.user_id
         WHERE m.group_id = ?
@@ -233,14 +234,35 @@ Router.get('/messages/:groupId', (req, res) => {
 
 Router.post('/messages/send', (req, res) => {
     const { groupId, senderId, content } = req.body;
-    const query = `
-        INSERT INTO Message (group_id, sender_id, content, created_at)
-        VALUES (?, ?, ?, NOW())
+    
+    // First get all members of the group except the sender
+    const getMembersQuery = `
+        SELECT user_id 
+        FROM Team_Members 
+        WHERE group_id = ? AND user_id != ?
     `;
-
-    db.query(query, [groupId, senderId, content], (err, result) => {
-        if (err) return res.status(500).json({ error: 'Failed to send message', details: err });
-        res.status(201).json({ message: 'Message sent successfully', messageId: result.insertId });
+    
+    db.query(getMembersQuery, [groupId, senderId], (err, members) => {
+        if (err) return res.status(500).json({ error: 'Failed to get group members', details: err });
+        
+        // For each member, create a message record
+        const insertPromises = members.map(member => {
+            return new Promise((resolve, reject) => {
+                const query = `
+                    INSERT INTO Message (group_id, sender_id, receiver_id, content, created_at)
+                    VALUES (?, ?, ?, ?, NOW())
+                `;
+                
+                db.query(query, [groupId, senderId, member.user_id, content], (err, result) => {
+                    if (err) reject(err);
+                    else resolve(result);
+                });
+            });
+        });
+        
+        Promise.all(insertPromises)
+            .then(() => res.status(201).json({ message: 'Messages sent successfully' }))
+            .catch(err => res.status(500).json({ error: 'Failed to send messages', details: err }));
     });
 });
 

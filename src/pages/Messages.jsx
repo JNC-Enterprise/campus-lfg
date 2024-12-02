@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './Messages.css';
 import mockMessages from '../../backend/mock/messageOverlay.json';
 
+
 const Messages = () => {
   const [groups, setGroups] = useState([]); // List of groups the user is in
   const [selectedGroup, setSelectedGroup] = useState(null); // Group that is currently selected

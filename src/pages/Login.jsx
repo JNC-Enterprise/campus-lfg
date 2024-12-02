@@ -37,6 +37,7 @@ function Login() {
       <Navbar/>
       <div className="input-container">
         <div className="login-form">
+          <label className="login-title">Log In</label>
           <div>
             <label className="login-label">Email </label>
             <input 

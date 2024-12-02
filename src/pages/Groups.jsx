@@ -1,7 +1,7 @@
 import './Groups.css'
 import { useParams } from 'react-router-dom';
 import GroupCreation from "../Group/GroupCreation.jsx"
-import Navbar from "./Navbar.jsx";
+import Navbar from './Navbar.jsx';
 import React, { useState, useEffect } from 'react';
 
 const Groups = () => {

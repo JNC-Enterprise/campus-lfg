@@ -32,7 +32,7 @@ function Login() {
         localStorage.setItem('userId', res.data.userId);
   
         // Redirect to the home page or the appropriate page
-        navigate('/register');
+        navigate('/');
       })
       .catch(err => {
         if (err.response && err.response.status === 401) {

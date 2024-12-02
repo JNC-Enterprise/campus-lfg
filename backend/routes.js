@@ -217,54 +217,66 @@ Router.get('/groups/user/:userId', (req, res) => {
 
 Router.get('/messages/:groupId', (req, res) => {
     const { groupId } = req.params;
+    console.log(`Fetching messages for groupId: ${groupId}`); // Add this log
+
     const query = `
-        SELECT m.message_id, m.content, m.sender_id, m.created_at, 
-               u.username AS sender_username, u.profile_picture
+        SELECT m.message_id, m.content, m.sender_id, 
+               u.username AS sender_username
         FROM Message m
         JOIN User u ON m.sender_id = u.user_id
         WHERE m.group_id = ?
-        ORDER BY m.created_at ASC
     `;
 
     db.query(query, [groupId], (err, results) => {
-        if (err) return res.status(500).json({ error: 'Failed to fetch messages', details: err });
+        if (err) {
+            console.error('Error fetching messages:', err); // Log the error
+            return res.status(500).json({ error: 'Failed to fetch messages', details: err });
+        }
+        if (results.length === 0) {
+            return res.status(200).json({ message: 'No messages yet' });
+        }
         res.status(200).json(results);
     });
 });
 
 Router.post('/messages/send', (req, res) => {
-    const { groupId, senderId, content } = req.body;
-    
-    // First get all members of the group except the sender
-    const getMembersQuery = `
-        SELECT user_id 
-        FROM Team_Members 
-        WHERE group_id = ? AND user_id != ?
-    `;
-    
-    db.query(getMembersQuery, [groupId, senderId], (err, members) => {
-        if (err) return res.status(500).json({ error: 'Failed to get group members', details: err });
-        
-        // For each member, create a message record
-        const insertPromises = members.map(member => {
-            return new Promise((resolve, reject) => {
-                const query = `
-                    INSERT INTO Message (group_id, sender_id, receiver_id, content, created_at)
-                    VALUES (?, ?, ?, ?, NOW())
-                `;
-                
-                db.query(query, [groupId, senderId, member.user_id, content], (err, result) => {
-                    if (err) reject(err);
-                    else resolve(result);
-                });
-            });
+    const { groupId, senderAccountId, content } = req.body;
+
+    console.log("Received message send request:");
+    console.log(`Group ID: ${groupId}, Sender Account ID: ${senderAccountId}, Content: ${content}`);
+
+    // Step 1: Fetch the user_id for the given senderAccountId
+    const getUserIdQuery = 'SELECT user_id FROM User WHERE account_id = ?';
+    db.query(getUserIdQuery, [senderAccountId], (err, result) => {
+        if (err) {
+            console.error('Error fetching user_id:', err);
+            return res.status(500).json({ error: 'Failed to fetch user_id', details: err });
+        }
+
+        if (result.length === 0) {
+            return res.status(404).json({ error: 'User not found for the given account_id' });
+        }
+
+        const senderUserId = result[0].user_id;
+        console.log('Fetched sender user_id:', senderUserId);
+
+        // Step 2: Insert the message into the Message table
+        const insertMessageQuery = `
+            INSERT INTO Message (group_id, sender_id, content)
+            VALUES (?, ?, ?)
+        `;
+        db.query(insertMessageQuery, [groupId, senderUserId, content], (err, result) => {
+            if (err) {
+                console.error('Error inserting message:', err);
+                return res.status(500).json({ error: 'Failed to send message', details: err });
+            }
+
+            res.status(201).json({ message: 'Message sent successfully', messageId: result.insertId });
         });
-        
-        Promise.all(insertPromises)
-            .then(() => res.status(201).json({ message: 'Messages sent successfully' }))
-            .catch(err => res.status(500).json({ error: 'Failed to send messages', details: err }));
     });
 });
+
+
 
 
 

@@ -4,6 +4,7 @@ import HomePage  from "./pages/Home";
 import Registration from "./pages/Registration";
 import Groups from "./pages/Groups";
 import Settings from "./pages/Settings";
+import About from "./pages/AboutUs";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path="/groups/:gameName" element={<Groups />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/about" element={<About />}/>
     </Routes>
   );
 }

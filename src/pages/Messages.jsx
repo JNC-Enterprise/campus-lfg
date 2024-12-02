@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './Messages.css';
+import mockMessages from '../../backend/mock/messageOverlay.json';
+
 
 
 const Messages = () => {
@@ -66,12 +68,14 @@ const Messages = () => {
 
           if (response.ok) {
             const data = await response.json();
-            setChatMessages(data);
+            setChatMessages(data.length > 0 ? data : mockMessages);
           } else {
             console.error('Failed to fetch messages.');
+            setChatMessages(mockMessages);
           }
         } catch (err) {
           console.error('Error fetching messages:', err);
+          setChatMessages(mockMessages);
         }
       };
 

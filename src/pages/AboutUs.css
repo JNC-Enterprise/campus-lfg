@@ -1,0 +1,21 @@
+.about-container {
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.about-heading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-text {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.about-box {
+    border: solid 1px white;
+    border-radius: 8px;
+    margin-top: 20px;
+}

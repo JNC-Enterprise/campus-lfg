@@ -166,3 +166,34 @@
 .no-groups {
   text-align: center;
 }
+
+
+.message-bubble {
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin: 5px 0;
+  max-width: 60%;
+}
+
+.sender {
+  align-self: flex-end;
+  background-color: #0084ff; /* Blue for sent messages */
+  margin-left: auto;
+}
+
+.receiver {
+  align-self: flex-start;
+  background-color: #f1f1f1; /* Grey for received messages */
+  margin-right: auto;
+}
+
+.message-content {
+  color: white;
+  font-size: 14px;
+}
+
+.message-username {
+  color: #ccc;
+  font-size: 12px;
+  margin-top: 5px;
+}

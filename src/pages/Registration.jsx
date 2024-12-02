@@ -48,7 +48,7 @@ function Registration() {
     axios.post('/api/register', { email, user_password: password, username })
       .then(res => {
         console.log(res.data.message);
-        navigate('/');
+        navigate('/login');
       })
       .catch(err => {
         console.log(err.response.data.message)

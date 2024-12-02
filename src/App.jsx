@@ -5,6 +5,7 @@ import Registration from "./pages/Registration";
 import Groups from "./pages/Groups";
 import Settings from "./pages/Settings";
 import About from "./pages/AboutUs";
+import Account from "./pages/Account";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path="/register" element={<Registration />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/about" element={<About />}/>
+      <Route path="/account" element={<Account />}/>
     </Routes>
   );
 }

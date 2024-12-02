@@ -41,7 +41,7 @@ const Navbar = () => {
             />
           </i>
         </a>
-        {/* <a href="/account" className="user-icon">
+        <a href="/account" className="user-icon">
           <i className="user-image">
             <img 
               src="https://i.imgur.com/CGFZyCx.png"
@@ -53,7 +53,7 @@ const Navbar = () => {
             />
           </i>
         </a> 
-        <div>
+        {/* <div>
           <ul className="nav-links">
             <li>
               <a href="/login" classname="login-link">Log In</a>

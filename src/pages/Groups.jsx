@@ -55,6 +55,8 @@ const Groups = () => {
 
 
   return (
+    <div>
+      <Navbar/>
     <div className="groups-container">
       {/* Game Header */}
       <div className="game-header">
@@ -100,6 +102,8 @@ const Groups = () => {
         <div className="no-groups">No groups found for this game. Be the first to create one!</div>
       )}
     </div>
+    </div>
+
   );
 };
 

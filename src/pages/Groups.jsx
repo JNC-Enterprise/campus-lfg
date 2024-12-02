@@ -1,7 +1,7 @@
 import './Groups.css'
 import { useParams } from 'react-router-dom';
 import GroupCreation from "../Group/GroupCreation.jsx"
-import Navbar from "./Navbar.jsx";
+import Navbar from './Navbar.jsx';
 import React, { useState, useEffect } from 'react';
 
 const Groups = () => {
@@ -55,6 +55,8 @@ const Groups = () => {
 
 
   return (
+    <div>
+      <Navbar/>
     <div className="groups-container">
       {/* Game Header */}
       <div className="game-header">
@@ -100,6 +102,8 @@ const Groups = () => {
         <div className="no-groups">No groups found for this game. Be the first to create one!</div>
       )}
     </div>
+    </div>
+
   );
 };
 

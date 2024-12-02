@@ -98,18 +98,6 @@
   text-align: center;
 }
 
-/* Add styling for last message */
-.last-message {
-  color: #999;
-  font-size: 0.8em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  text-align: center;
-  line-height: 1.2;
-}
-
 /* Input box styling */
 .input-box {
   width: 100%;

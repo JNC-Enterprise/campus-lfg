@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './Messages.css';
+import mockMessages from '../../backend/mock/messageOverlay.json';
 
 const Messages = () => {
   const [groups, setGroups] = useState([]); // List of groups the user is in
@@ -14,9 +15,6 @@ const Messages = () => {
   // Get the userId and token from localStorage
   const token = localStorage.getItem('authToken');
   const userId = localStorage.getItem('userId'); // Or parse userId from the token
-
-  // Add new state for storing last messages
-  const [groupsWithLastMessage, setGroupsWithLastMessage] = useState({});
 
   // Fetch groups for the logged-in user
   useEffect(() => {
@@ -49,34 +47,6 @@ const Messages = () => {
     fetchGroups();
   }, [userId, token]);
 
-  // Add this effect to fetch last messages for each group
-  useEffect(() => {
-    const fetchLastMessages = async () => {
-      if (!token || groups.length === 0) return;
-
-      const messages = {};
-      for (const group of groups) {
-        try {
-          const response = await fetch(`/api/messages/${group.group_id}/last`, {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-            },
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            messages[group.group_id] = data.message || 'No messages yet';
-          }
-        } catch (err) {
-          console.error('Error fetching last message:', err);
-          messages[group.group_id] = 'Unable to load message';
-        }
-      }
-      setGroupsWithLastMessage(messages);
-    };
-
-    fetchLastMessages();
-  }, [groups, token]);
 
   // Fetch messages for the selected group
   useEffect(() => {
@@ -96,12 +66,14 @@ const Messages = () => {
 
           if (response.ok) {
             const data = await response.json();
-            setChatMessages(data);
+            setChatMessages(data.length > 0 ? data : mockMessages);
           } else {
             console.error('Failed to fetch messages.');
+            setChatMessages(mockMessages);
           }
         } catch (err) {
           console.error('Error fetching messages:', err);
+          setChatMessages(mockMessages);
         }
       };
 
@@ -159,9 +131,6 @@ const Messages = () => {
               onClick={() => handleGroupSelect(group)}
             >
               <div className='group-name'>{group.group_name}</div>
-              <div className='last-message'>
-                {groupsWithLastMessage[group.group_id] || 'No message sent'}
-              </div>
             </div>
           ))
         ) : (

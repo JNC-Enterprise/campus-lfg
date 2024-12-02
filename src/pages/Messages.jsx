@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './Messages.css';
-import mockMessages from '../../backend/mock/messageOverlay.json';
+
 
 const Messages = () => {
   const [groups, setGroups] = useState([]); // List of groups the user is in
@@ -66,14 +66,12 @@ const Messages = () => {
 
           if (response.ok) {
             const data = await response.json();
-            setChatMessages(data.length > 0 ? data : mockMessages);
+            setChatMessages(data);
           } else {
             console.error('Failed to fetch messages.');
-            setChatMessages(mockMessages);
           }
         } catch (err) {
           console.error('Error fetching messages:', err);
-          setChatMessages(mockMessages);
         }
       };
 

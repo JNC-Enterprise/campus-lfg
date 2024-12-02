@@ -49,8 +49,30 @@ const Groups = () => {
   };
 
   // Redirect to individual group pages
-  const handleRowClick = (group) => {
-    window.location.href = `/group/${group.group_id}`;
+  const handleRowClick = async (group) => {
+    try {
+        const accountId = localStorage.getItem('userId');
+        const response = await fetch('/api/groups/join', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                group_id: group.group_id,
+                account_id: accountId
+            })
+        });
+
+        if (response.ok) {
+            // Redirect to home page after successful join
+            window.location.href = '/';
+        } else {
+            const data = await response.json();
+            setError(data.message || 'Failed to join group');
+        }
+    } catch (err) {
+        setError('An error occurred while joining the group');
+    }
   };
 
 

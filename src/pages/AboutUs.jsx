@@ -14,7 +14,7 @@ const About = () => {
                   GitHub: <a href="https://github.com/jatinsu" target="_blank" rel="noopener noreferrer">jatinsu</a>
               </p>
               <p className="about-text">
-                  Email: <a href="mailto:surijatin@yahoo.com">surijatin@yahoo.com</a>
+                  Email: <a href="mailto:jsuri2@umbc.edu">jsuri2@umbc.edu</a>
               </p>
             </div>
             <div className="about-box">

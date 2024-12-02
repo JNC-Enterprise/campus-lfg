@@ -13,7 +13,7 @@ function GroupCreation({ toggleVisibility, defaultGame }) {
   // Define rank options for each game
   const rankOptions = {
     "Valorant": ["Iron", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Immortal", "Radiant"],
-    "Overwatch": ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Grandmaster"],
+    "Overwatch 2": ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Grandmaster"],
     "Rainbow Six Siege": ["Copper", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Champion"],
     "Fortnite": ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Elite", "Champion", "Unreal"],
     "Apex Legends": ["Rookie", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Apex Predator"],
@@ -30,7 +30,7 @@ function GroupCreation({ toggleVisibility, defaultGame }) {
   // Define Gamemode options for each game
   const gamemodeOptions = {
     "Valorant": ["Unrated", "Competitive", "Swiftplay", "Spike Rush", "Premier", "Deathmatch", "Team Deathmatch"],
-    "Overwatch": ["Competitive", "Deathmatch", "Capture the Flag", "PVE", "Limited Time Event"],
+    "Overwatch 2": ["Competitive", "Deathmatch", "Capture the Flag", "PVE", "Limited Time Event"],
     "Rainbow Six Siege": ["Competitive", "Quick Match", "Standard", "Hostage", "Bomb"],
     "Fortnite": ["Competitive (Build)", "Competitive (No Build)", "Unrated (Build)", "Unrated (No Build)", "Creative", "Team Rumble", "Lego Fortnite", "Save the World"],
     "Apex Legends": ["Battle Royale", "Ranked", "Control", "Gun Run", "Team Deathmatch"],
@@ -46,7 +46,7 @@ function GroupCreation({ toggleVisibility, defaultGame }) {
   // Define # of players for each game
   const playersOptions = {
     "Valorant": [1, 2, 3, 4],
-    "Overwatch": [1, 2, 3, 4],
+    "Overwatch 2": [1, 2, 3, 4],
     "Rainbow Six Siege": [1, 2, 3, 4],
     "Fortnite": [1, 2, 3],
     "Apex Legends": [1, 2],

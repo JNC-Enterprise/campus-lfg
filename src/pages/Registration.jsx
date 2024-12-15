@@ -48,7 +48,7 @@ function Registration() {
     axios.post('/api/register', { email, user_password: password, username })
       .then(res => {
         console.log(res.data.message);
-        navigate('/login');
+        navigate('/');
       })
       .catch(err => {
         console.log(err.response.data.message)
@@ -64,7 +64,6 @@ function Registration() {
 
   return (
     <div>
-      <Navbar/>
       <div className="input-container">
         <div className="register-form">
           <div>

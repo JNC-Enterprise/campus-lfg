@@ -32,7 +32,7 @@ function Login() {
         localStorage.setItem('userId', res.data.userId);
   
         // Redirect to the home page or the appropriate page
-        navigate('/');
+        navigate('/Home');
       })
       .catch(err => {
         if (err.response && err.response.status === 401) {
@@ -47,7 +47,6 @@ function Login() {
 
   return(
     <div>
-      <Navbar/>
       <div className="input-container">
         <div className="login-form">
           <label className="login-title">Log In</label>

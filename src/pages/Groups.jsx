@@ -65,7 +65,7 @@ const Groups = () => {
 
         if (response.ok) {
             // Redirect to home page after successful join
-            window.location.href = '/';
+            window.location.href = '/Home';
         } else {
             const data = await response.json();
             setError(data.message || 'Failed to join group');

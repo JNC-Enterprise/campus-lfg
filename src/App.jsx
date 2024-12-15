@@ -11,8 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/Home" element={<HomePage />} />
       <Route path="/groups/:gameName" element={<Groups />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/settings" element={<Settings />} />

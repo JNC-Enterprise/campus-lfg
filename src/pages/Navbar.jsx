@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <a href="/" className="logo">
+        <a href="/Home" className="logo">
           <img
               src="https://i.imgur.com/jev0l86.png"
               alt="Campus LFG Logo"

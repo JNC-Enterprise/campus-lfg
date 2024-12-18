@@ -1,0 +1,8 @@
+.change-bio{
+    margin: 0;
+    padding: 8px;
+    height: 100px;
+    width: 260px;
+    border: 1px solid #ccc;
+    border-radius: 7px !important; 
+}

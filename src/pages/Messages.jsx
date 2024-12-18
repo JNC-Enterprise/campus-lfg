@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './Messages.css';
 import mockMessages from '../../backend/mock/messageOverlay.json';
+import mockGroups from '../../backend/mock/messages.json';
 
 const Messages = () => {
   const [groups, setGroups] = useState([]); // List of groups the user is in
@@ -25,18 +26,9 @@ const Messages = () => {
       }
 
       try {
-        const response = await fetch(`/api/groups/user/${userId}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setGroups(data);
-        } else {
-          setError('Failed to fetch groups.');
-        }
+        // Use mockGroups instead of fetching from the API
+        console.log('Mock Groups:', mockGroups);
+        setGroups([mockGroups[0]]);
       } catch (err) {
         setError('An error occurred while fetching groups.');
       } finally {
@@ -46,7 +38,6 @@ const Messages = () => {
 
     fetchGroups();
   }, [userId, token]);
-
 
   // Fetch messages for the selected group
   useEffect(() => {
@@ -58,19 +49,8 @@ const Messages = () => {
         }
 
         try {
-          const response = await fetch(`/api/messages/${selectedGroup.group_id}`, {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-            },
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            setChatMessages(data.length > 0 ? data : mockMessages);
-          } else {
-            console.error('Failed to fetch messages.');
-            setChatMessages(mockMessages);
-          }
+          // Use mockMessages instead of fetching from the API
+          setChatMessages(mockMessages);
         } catch (err) {
           console.error('Error fetching messages:', err);
           setChatMessages(mockMessages);
@@ -111,11 +91,6 @@ const Messages = () => {
     }
   };
 
-  // Handle selecting a group
-  const handleGroupSelect = (group) => {
-    setSelectedGroup(group);
-  };
-
   return (
     <div className='messages'>
       {loading && <p>Loading groups...</p>}
@@ -124,13 +99,13 @@ const Messages = () => {
       {/* Left side: display groups */}
       <div className='group-list'>
         {groups.length > 0 ? (
-          groups.map((group) => (
+          groups.map((group, index) => (
             <div
-              key={group.group_id}
+              key={index}
               className='group-item'
-              onClick={() => handleGroupSelect(group)}
+              onClick={() => setSelectedGroup(group)}
             >
-              <div className='group-name'>{group.group_name}</div>
+              <div className='group-name'>{group.groupName}</div>
             </div>
           ))
         ) : (
@@ -147,7 +122,7 @@ const Messages = () => {
             <div className='cross-exit'>
               <button className='cross-exit-button' onClick={() => setSelectedGroup(null)}>X</button>
             </div>
-            <span className='group-name-popup'>{selectedGroup.group_name}</span>
+            <span className='group-name-popup'>{selectedGroup.groupName}</span>
           </div>
 
           <div className='messages-container'>

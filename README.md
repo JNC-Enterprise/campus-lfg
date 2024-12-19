@@ -2,6 +2,12 @@
 
 Uses React as the frontend and SQL as the backend. Allows for students across campuses to find and join groups who like playing similar games
 
+Supports:
+1. Account Creation
+2. Group Joining
+3. Group creating
+4. Messaging
+
 ## How to run
 
 ### Frontend (without backend)

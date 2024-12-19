@@ -21,7 +21,7 @@ This is a bit time-intensive. Takes roughly 30-45 minutes if you follow the vide
 2. Run `npm i` in your terminal to install dependencies
 3. After dependencies are installed, run `npm run dev` in your terminal and go to backend section
 
-### Backend (tested on macOS)
+#### Backend (tested on macOS)
 1. Install SQL & MySQLWorkbench (We used [This video for macOS](https://www.youtube.com/watch?v=3BFxALltQaM))
 2. go into the connection from the home page in MySQLWorkbench (you can skip steps 2-4 if you [follow this video](https://www.youtube.com/watch?v=wALCw0F8e9M))
 3. Create a new database by running:

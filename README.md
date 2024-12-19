@@ -16,12 +16,12 @@ git switch testFrontend
 
 
 ### Frontend (With backend)
-This is a bit time-intensive. Takes roughly 30-45 minutes if you follow the videos for the backend. If you only want to see the UI follow the steps above.
 1. Make sure [npm](https://nodejs.org/en/download/package-manager) is installed on your device
 2. Run `npm i` in your terminal to install dependencies
 3. After dependencies are installed, run `npm run dev` in your terminal and go to backend section
 
 #### Backend (tested on macOS)
+This is a bit time-intensive. Takes roughly 30-45 minutes if you follow the videos for the backend. If you only want to see the UI follow the [steps above.](https://github.com/JNC-Enterprise/campus-lfg#frontend-without-backend)
 1. Install SQL & MySQLWorkbench (We used [This video for macOS](https://www.youtube.com/watch?v=3BFxALltQaM))
 2. go into the connection from the home page in MySQLWorkbench (you can skip steps 2-4 if you [follow this video](https://youtu.be/wgRwITQHszU?si=jVjhFsbzbrpLGmU4&t=398))
 3. Create a new database

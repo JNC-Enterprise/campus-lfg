@@ -23,12 +23,8 @@ This is a bit time-intensive. Takes roughly 30-45 minutes if you follow the vide
 
 #### Backend (tested on macOS)
 1. Install SQL & MySQLWorkbench (We used [This video for macOS](https://www.youtube.com/watch?v=3BFxALltQaM))
-2. go into the connection from the home page in MySQLWorkbench (you can skip steps 2-4 if you [follow this video](https://www.youtube.com/watch?v=wALCw0F8e9M))
-3. Create a new database by running:
-```sql
-CREATE DATABASE gaming_db;
-USE gaming_db;
-```
+2. go into the connection from the home page in MySQLWorkbench (you can skip steps 2-4 if you [follow this video](https://youtu.be/wgRwITQHszU?si=jVjhFsbzbrpLGmU4&t=398))
+3. Create a new database
 4. Add the two sql files as schemas and execute it by pressing the lightning bolt icon
 5. After you're done setting up the database, go to your local campus-lfg directory and cd into backend
 6. Run `npm start`

@@ -4,18 +4,24 @@ Uses React as the frontend and SQL as the backend. Allows for students across ca
 
 ## How to run
 
-### Frontend
+### Frontend (without backend)
 1. Clone this repo
+2. run this command in your terminal
+```bash
+git switch testFrontend
+```
+4. Make sure [npm](https://nodejs.org/en/download/package-manager) is installed on your device
+5. Run `npm i` in your terminal to install dependencies
+6. After dependencies are installed, run `npm run dev` in your terminal
 
-**To see frontend without installing backend, run this command first `git switch testFrontend`, and then use the next steps**
 
-2. Make sure [npm](https://nodejs.org/en/download/package-manager) is installed on your device
-3. Run `npm i`
-4. After dependencies are installed, run `npm run dev`
+### Frontend (With backend)
+This is a bit time-intensive. Takes roughly 30-45 minutes if you follow the videos for the backend. If you only want to see the UI follow the steps above.
+1. Make sure [npm](https://nodejs.org/en/download/package-manager) is installed on your device
+2. Run `npm i` in your terminal to install dependencies
+3. After dependencies are installed, run `npm run dev` in your terminal and go to backend section
 
 ### Backend (tested on macOS)
-This is a bit time-intensive. Takes roughly 30-45 minutes if you follow the vidoes. If you only want to see the UI run `git switch testFrontend` and follow the steps above.
-
 1. Install SQL & MySQLWorkbench (We used [This video for macOS](https://www.youtube.com/watch?v=3BFxALltQaM))
 2. go into the connection from the home page in MySQLWorkbench (you can skip steps 2-4 if you [follow this video](https://www.youtube.com/watch?v=wALCw0F8e9M))
 3. Create a new database by running:

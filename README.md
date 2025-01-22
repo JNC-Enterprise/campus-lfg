@@ -1,4 +1,6 @@
-**A LFG website for College Students. Made in React.**
+**A LFG website for College Students. Made in React, SQL, and NodeJS**
+
+[Demo of project](https://youtu.be/OrGEcA5Bsd8)
 
 Uses React as the frontend and SQL as the backend. Allows for students across campuses to find and join groups who like playing similar games
 
